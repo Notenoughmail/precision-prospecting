@@ -1,3 +1,9 @@
+/*
+ * Licensed under the EUPL, Version 1.2.
+ * You may obtain a copy of the License at:
+ * https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12
+ */
+
 package com.notenoughmail.precisionprospecting.items;
 
 import net.dries007.tfc.common.TFCItemGroup;
@@ -21,6 +27,7 @@ public class Registration {
         ITEMS.register(bus);
     }
 
+    //This hurts, but I don't feel like finagling with Maps and whatnot right now
     public static final RegistryObject<Item>
             RED_STEEL_PROSHAMMER = ITEMS.register("metal/prospector_hammer/red_steel", () -> new ProsHammerItem(TFCTiers.RED_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.RED_STEEL), -3f, properties())),
             RED_STEEL_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/red_steel", () -> new Item(properties())),

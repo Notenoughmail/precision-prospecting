@@ -1,4 +1,14 @@
-// This is a near word-for-word copy of tfc/common/items/PropickItem
+/* This is a near word-for-word copy of tfc/common/items/PropickItem
+ * RADIUS, COOLDOWN,the first float defining falseNegativeChance, and the hash for the RANDOM seed all differ from the original
+ * falseNegativeChance has been renamed to falseNegChance
+ * the BlockPos value of scanAreaFor has been renamed from center to position
+ */
+
+/*
+ * Licensed under the EUPL, Version 1.2.
+ * You may obtain a copy of the License at:
+ * https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12
+ */
 
 package com.notenoughmail.precisionprospecting.items;
 
