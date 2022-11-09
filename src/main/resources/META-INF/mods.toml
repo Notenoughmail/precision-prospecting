@@ -1,0 +1,53 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="EUPL-1.2"
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+
+[[mods]] #mandatory
+    modId="precisionprospecting"
+    version="${file.jarVersion}"
+    displayName="Precision Prospecting"
+    # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
+    #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+    # A URL for the "homepage" for this mod, displayed in the mod UI
+    #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+    logoFile="examplemod.png"
+    credits="Spite? and frustration"
+    authors="Not Enough Mail"
+    description='''The range on Prospector's Picks is simply too large'''
+
+# Dependencies
+[[dependencies.precisionprospecting]]
+    modId="jei"
+    mandatory=false
+    versionRange="[9.7.0,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.precisionprospecting]]
+    modId = "tfc"
+    mandatory = true
+    versionRange = "[2.1.14,)"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.precisionprospecting]]
+    modId = "patchouli"
+    mandatory = true
+    versionRange = "[1.18.2-67,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.precisionprospecting]]
+    modId = "forge"
+    mandatory = true
+    versionRange = "[40.1.73,)"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.precisionprospecting]]
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.18.2,1.19)"
+    ordering = "AFTER"
+    side = "BOTH"
