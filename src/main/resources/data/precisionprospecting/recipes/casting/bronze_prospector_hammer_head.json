@@ -1,0 +1,14 @@
+{
+  "type": "tfc:casting",
+  "mold": {
+    "item": "precisionprospecting:ceramic/prospector_hammer_head_mold"
+  },
+  "fluid": {
+    "ingredient": "tfc:metal/bronze",
+    "amount": 200
+  },
+  "result": {
+    "item": "precisionprospecting:metal/prospector_hammer_head/bronze"
+  },
+  "break_chance": 1
+}

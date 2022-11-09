@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "tag": "forge:double_ingots/copper"
+  },
+  "result": {
+    "item": "precisionprospecting:metal/prospector_hammer_head/copper"
+  },
+  "tier": 1,
+  "rules": [
+    "punch_last",
+    "shrink_not_last"
+  ],
+  "apply_forging_bonus": true
+}

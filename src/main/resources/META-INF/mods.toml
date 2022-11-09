@@ -1,20 +1,18 @@
 modLoader="javafml"
 loaderVersion="[40,)"
 license="EUPL-1.2"
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+issueTrackerURL="https://github.com/Notenoughmail/precision-prospecting/issues"
 
 [[mods]] #mandatory
     modId="precisionprospecting"
     version="${file.jarVersion}"
     displayName="Precision Prospecting"
-    # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
-    #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
     # A URL for the "homepage" for this mod, displayed in the mod UI
     #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
     logoFile="examplemod.png"
     credits="Spite? and frustration"
     authors="Not Enough Mail"
-    description='''The range on Prospector's Picks is simply too large'''
+    description='''The range of the Prospector's Pick has caused enough frustration'''
 
 # Dependencies
 [[dependencies.precisionprospecting]]

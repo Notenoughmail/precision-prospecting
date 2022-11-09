@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "tag": "forge:double_ingots/black_steel"
+  },
+  "result": {
+    "item": "precisionprospecting:metal/prospector_hammer_head/black_steel"
+  },
+  "tier": 5,
+  "rules": [
+    "punch_last",
+    "shrink_not_last"
+  ],
+  "apply_forging_bonus": true
+}
