@@ -7,5 +7,16 @@
   "item.precisionprospecting.metal.prospector_hammer.black_bronze": "Black Bronze Prospector's Hammer",
   "item.precisionprospecting.metal.prospector_hammer.bismuth_bronze": "Bismuth Bronze Prospector's Hammer",
   "item.precisionprospecting.metal.prospector_hammer.bronze": "Bronze Prospector's Hammer",
-  "item.precisionprospecting.metal.prospector_hammer.copper": "Copper Prospector's Hammer"
+  "item.precisionprospecting.metal.prospector_hammer.copper": "Copper Prospector's Hammer",
+  "item.precisionprospecting.metal.prospector_hammer_head.red_steel": "Red Steel Prospector's Hammer Head",
+  "item.precisionprospecting.metal.prospector_hammer_head.blue_steel": "Blue Steel Prospector's Hammer Head",
+  "item.precisionprospecting.metal.prospector_hammer_head.black_steel": "Black Steel Prospector's Hammer Head",
+  "item.precisionprospecting.metal.prospector_hammer_head.steel": "Steel Prospector's Hammer Head",
+  "item.precisionprospecting.metal.prospector_hammer_head.wrought_iron": "Wrought Iron Prospector's Hammer Head",
+  "item.precisionprospecting.metal.prospector_hammer_head.black_bronze": "Black Bronze Prospector's Hammer Head",
+  "item.precisionprospecting.metal.prospector_hammer_head.bismuth_bronze": "Bismuth Bronze Prospector's Hammer Head",
+  "item.precisionprospecting.metal.prospector_hammer_head.bronze": "Bronze Prospector's Hammer Head",
+  "item.precisionprospecting.metal.prospector_hammer_head.copper": "Copper Prospector's Hammer Head",
+  "item.precisionprospecting.ceramic.unfired_prospector_hammer_head_mold": "Unfired Prospector's Hammer Head Mold",
+  "item.precisionprospecting.ceramic.prospector_hammer_head_mold": "Prospector's Hammer Head Mold"
 }

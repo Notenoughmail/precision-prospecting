@@ -1,6 +1,5 @@
 {
   "type": "tfc:clay_knapping",
-  "outside_slot_required": true,
   "pattern": [
     "XXXXX",
     "X   X",
@@ -8,7 +7,7 @@
     "X   X",
     "XXXXX"
   ],
-  "results": {
+  "result": {
     "item": "precisionprospecting:ceramic/unfired_prospector_hammer_head_mold"
   }
 }
