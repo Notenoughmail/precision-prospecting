@@ -1,0 +1,33 @@
+{
+  "ingredient": [
+    {
+      "item": "precisionprospecting:metal/prospector_hammer/bismuth_bronze"
+    },
+    {
+      "item": "precisionprospecting:metal/prospector_hammer/black_bronze"
+    },
+    {
+      "item": "precisionprospecting:metal/prospector_hammer/bronze"
+    },
+    {
+      "item": "precisionprospecting:metal/prospector_hammer/copper"
+    },
+    {
+      "item": "precisionprospecting:metal/prospector_hammer/wrought_iron"
+    },
+    {
+      "item": "precisionprospecting:metal/prospector_hammer/steel"
+    },
+    {
+      "item": "precisionprospecting:metal/prospector_hammer/black_steel"
+    },
+    {
+      "item": "precisionprospecting:metal/prospector_hammer/blue_steel"
+    },
+    {
+      "item": "precisionprospecting:metal/prospector_hammer/red_steel"
+    }
+  ],
+  "size": "very_large",
+  "weight": "very_heavy"
+}
