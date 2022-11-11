@@ -10,7 +10,6 @@ issueTrackerURL="https://github.com/Notenoughmail/precision-prospecting/issues"
     # A URL for the "homepage" for this mod, displayed in the mod UI
     #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
     logoFile="examplemod.png"
-    credits="Spite? and frustration"
     authors="Not Enough Mail"
     description='''The range of the Prospector's Pick has caused enough frustration'''
 
