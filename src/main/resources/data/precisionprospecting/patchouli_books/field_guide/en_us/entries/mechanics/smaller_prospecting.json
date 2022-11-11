@@ -1,0 +1,46 @@
+{
+  "name": "Smaller Prospecting",
+  "category": "tfc:mechanics",
+  "icon": "precisionprospecting:metal/prospector_hammer/bronze",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Are you getting frustrated by the large range of your $(l:mechanics/prospecting)Prospector's Pick$()? Tired of digging around clueless as to the location of your riches? Well, despair no more, for the $(thing)Prospector's Hammer$() can help!"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Prospector's Hammer is a $(t:In more ways than one!)near copy$() of its pick-y brother, with the notable exception of a smaller range, only searching the 13x13x13 area centered on the block inspected and slightly less accuracy overall. Very useful for finding veins that appear to be all around you."
+    },
+    {
+      "type": "tfc:clay_knapping_recipe",
+      "recipe": "precisionprospecting:clay_knapping/prospector_hammer_head_mold",
+      "text": "Much like with a Prospector's Pick, a Prospector's Hammer Head Mold can be made from $(l:getting_started/pottery)knapping$() some clay as shown above."
+    },
+    {
+      "type": "tfc:heat_recipe",
+      "recipe": "precisionprospecting:heating/prospector_hammer_head_mold",
+      "text": "Then, the mold can be $(l:mechanics/heating)fired$() to create a $(thing)Prospector's Hammer Head Mold$().$(br2)To create the tool head, $(l:getting_started/finding_ores#casting)cast$() liquid metal into the mold."
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "precisionprospecting:anvil/bronze_prospector_hammer_head",
+      "text": "A Prospector's Hammer Head can also be $(l:mechanics/anvils#working)smithed$() out of a $(thing)double ingot$() of any tool metal on an $(l:mechanics/anvils)Anvil$(). Craft the tool head with a stick to make a Prospector's Hammer"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Note that it will be rare to see a Prospector's Hammer report finding a $(thing)Very Large Sample$(), due to its reduced range."
+    }
+  ],
+  "read_by_default": true,
+  "extra_recipe_mappings": {
+    "precisionprospecting:metal/prospector_hammer/bismuth_bronze":  0,
+    "precisionprospecting:metal/prospector_hammer/black_bronze": 0,
+    "precisionprospecting:metal/prospector_hammer/bronze": 0,
+    "precisionprospecting:metal/prospector_hammer/copper": 0,
+    "precisionprospecting:metal/prospector_hammer/wrought_iron": 0,
+    "precisionprospecting:metal/prospector_hammer/steel": 0,
+    "precisionprospecting:metal/prospector_hammer/black_steel": 0,
+    "precisionprospecting:metal/prospector_hammer/blue_steel": 0,
+    "precisionprospecting:metal/prospector_hammer/red_steel": 0
+  }
+}
