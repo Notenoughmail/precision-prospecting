@@ -50,7 +50,7 @@ public class Registration {
             COPPER_PROSHAMMER = ITEMS.register("metal/prospector_hammer/copper", () -> new ProsHammerItem(TFCTiers.COPPER, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.COPPER), -3f, metal_properties())),
             COPPER_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/copper", () -> new Item(metal_properties())),
             UNFIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/unfired_prospector_hammer_head_mold", () -> new Item(ceramic_properties())),
-            FIRED_PROSHAMMER_MOLD =ITEMS.register("ceramic/prospector_hammer_head_mold", () -> new MoldItem(Metal.ItemType.SWORD_BLADE, ceramic_properties()))
+            FIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/prospector_hammer_head_mold", () -> new MoldItem(Metal.ItemType.SWORD_BLADE, ceramic_properties()))
                     ;//would love to use MoldItem(capacity, fluidTag, properties), but I cannot figure out how to use/make a functioning IntSupplier without essentially copying 90% of the MoldItem and Metal classes, thus it is tied to the sword's config
 
     public static Item.Properties metal_properties() {
