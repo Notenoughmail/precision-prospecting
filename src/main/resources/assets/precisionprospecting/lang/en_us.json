@@ -18,5 +18,8 @@
   "item.precisionprospecting.metal.prospector_hammer_head.bronze": "Bronze Prospector's Hammer Head",
   "item.precisionprospecting.metal.prospector_hammer_head.copper": "Copper Prospector's Hammer Head",
   "item.precisionprospecting.ceramic.unfired_prospector_hammer_head_mold": "Unfired Prospector's Hammer Head Mold",
-  "item.precisionprospecting.ceramic.prospector_hammer_head_mold": "Prospector's Hammer Head Mold"
+  "item.precisionprospecting.ceramic.prospector_hammer_head_mold": "Prospector's Hammer Head Mold",
+
+  "precisionprospecting.advancements.story.prospector_hammer.title": "Smaller Prospector",
+  "precisionprospecting.advancements.story.prospector_hammer.description": "Make a prospector's hammer"
 }

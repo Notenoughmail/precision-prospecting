@@ -1,0 +1,36 @@
+{
+  "parent": "tfc:story/propick",
+  "criteria": {
+    "proshammers": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "precisionprospecting:prospector_hammers"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "item": "precisionprospecting:metal/prospector_hammer/copper"
+    },
+    "title": {
+      "translate": "precisionprospecting.advancements.story.prospector_hammer.title"
+    },
+    "description": {
+      "translate": "precisionprospecting.advancements.story.prospector_hammer.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "tfc:textures/block/rock/mossy_cobble/diorite.ong"
+  },
+  "requirements": [
+    [
+      "proshammers"
+    ]
+  ]
+}
