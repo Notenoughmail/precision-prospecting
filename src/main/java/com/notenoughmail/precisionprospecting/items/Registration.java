@@ -7,10 +7,10 @@
 package com.notenoughmail.precisionprospecting.items;
 
 import net.dries007.tfc.common.TFCItemGroup;
+import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.items.MoldItem;
 import net.dries007.tfc.common.items.ToolItem;
 import net.dries007.tfc.common.TFCTiers;
-import net.dries007.tfc.util.Metal;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -19,6 +19,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.notenoughmail.precisionprospecting.PrecisionProspecting.MODID;
+import static com.notenoughmail.precisionprospecting.config.PrecProsConfig.moldProsHammerCapacity;
 
 public class Registration {
 
@@ -50,8 +51,8 @@ public class Registration {
             COPPER_PROSHAMMER = ITEMS.register("metal/prospector_hammer/copper", () -> new ProsHammerItem(TFCTiers.COPPER, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.COPPER), -3f, metal_properties())),
             COPPER_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/copper", () -> new Item(metal_properties())),
             UNFIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/unfired_prospector_hammer_head_mold", () -> new Item(ceramic_properties())),
-            FIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/prospector_hammer_head_mold", () -> new MoldItem(Metal.ItemType.SWORD_BLADE, ceramic_properties()))
-                    ;//would love to use MoldItem(capacity, fluidTag, properties), but I cannot figure out how to use/make a functioning IntSupplier without essentially copying 90% of the MoldItem and Metal classes, thus it is tied to the sword's config
+            FIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/prospector_hammer_head_mold", () -> new MoldItem(() -> moldProsHammerCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties()))
+                    ;//Big thanks to Alc on Discord for telling me you can just pass in a lambda like this, which makes sense now that I think about it
 
     public static Item.Properties metal_properties() {
         return new Item.Properties().tab(TFCItemGroup.METAL);

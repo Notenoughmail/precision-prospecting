@@ -7,6 +7,7 @@
 package com.notenoughmail.precisionprospecting;
 
 import com.mojang.logging.LogUtils;
+import com.notenoughmail.precisionprospecting.config.PrecProsConfig;
 import com.notenoughmail.precisionprospecting.items.Registration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,6 +26,7 @@ public class PrecisionProspecting {
     public PrecisionProspecting() {
 
         Registration.init();
+        PrecProsConfig.register();
 
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
