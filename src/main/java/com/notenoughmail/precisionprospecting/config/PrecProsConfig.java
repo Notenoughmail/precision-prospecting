@@ -1,3 +1,9 @@
+/*
+ * Licensed under the EUPL, Version 1.2.
+ * You may obtain a copy of the License at:
+ * https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12
+ */
+
 package com.notenoughmail.precisionprospecting.config;
 
 import net.dries007.tfc.util.Alloy;
@@ -17,14 +23,19 @@ public class PrecProsConfig {
     }
 
     public static ForgeConfigSpec.IntValue moldProsHammerCapacity;
+    public static ForgeConfigSpec.IntValue moldProsDrillCapacity;
 
     private static void registerServerConfig(ForgeConfigSpec.Builder builder) {
         builder.comment("This is the config for Precision Prospecting");
         builder.push("molds");
 
         moldProsHammerCapacity = builder
-                .comment("Tank capacity of a Prospector's Hammer mold (in mB).")
+                .comment("Tank capacity of a Prospector's Hammer head mold (in mB).")
                 .defineInRange("moldProsHammerCapacity", 200, 0, Alloy.MAX_ALLOY);
+
+        moldProsDrillCapacity = builder
+                .comment("Tank Capacity of a Prospector's Drill head mold (in mB).")
+                .defineInRange("moldProsDrillCapacity", 400, 0, Alloy.MAX_ALLOY);
 
         builder.pop();
     }

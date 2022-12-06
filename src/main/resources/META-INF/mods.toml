@@ -7,9 +7,8 @@ issueTrackerURL="https://github.com/Notenoughmail/precision-prospecting/issues"
     modId="precisionprospecting"
     version="${file.jarVersion}"
     displayName="Precision Prospecting"
-    # A URL for the "homepage" for this mod, displayed in the mod UI
-    #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
-    logoFile="examplemod.png"
+    displayURL="https://www.curseforge.com/minecraft/mc-mods/precision-prospecting"
+    logoFile="precision_prospecting_icon.png"
     authors="Not Enough Mail"
     description='''The range of the Prospector's Pick has caused enough frustration'''
 

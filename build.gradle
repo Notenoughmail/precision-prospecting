@@ -23,7 +23,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
 //version = '${minecraft_version}-${mod_version}'
-version = '1.18.2-0.2.2'
+version = '1.18.2-0.3.0'
 group = 'com.notenoughmail.precisionprospecting' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'precisionprospecting'
 
