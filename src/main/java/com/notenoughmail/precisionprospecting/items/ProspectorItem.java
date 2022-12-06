@@ -88,62 +88,37 @@ public class ProspectorItem extends ToolItem {
         final BlockState state = level.getBlockState(pos);
         final Direction direction = context.getClickedFace();
 
-        int pX1;
-        int pX2;
-        int pY1;
-        int pY2;
-        int pZ1;
-        int pZ2;
+        int pX1 = pos.getX() - PRIMARY_RADIUS;
+        int pX2 = pos.getX() + PRIMARY_RADIUS;
+        int pY1 = pos.getY() - PRIMARY_RADIUS;
+        int pY2 = pos.getY() + PRIMARY_RADIUS;
+        int pZ1 = pos.getZ() - PRIMARY_RADIUS;
+        int pZ2 = pos.getZ() + PRIMARY_RADIUS;
 
-        // It works...
         switch (direction.getOpposite()) {
             case UP -> {
-                pX1 = pos.getX() - PRIMARY_RADIUS;
-                pX2 = pos.getX() + PRIMARY_RADIUS;
                 pY1 = pos.getY() + DISPLACEMENT - SECONDARY_RADIUS;
                 pY2 = pos.getY() + DISPLACEMENT + SECONDARY_RADIUS;
-                pZ1 = pos.getZ() - PRIMARY_RADIUS;
-                pZ2 = pos.getZ() + PRIMARY_RADIUS;
             }
             case DOWN -> {
-                pX1 = pos.getX() - PRIMARY_RADIUS;
-                pX2 = pos.getX() + PRIMARY_RADIUS;
                 pY1 = pos.getY() - DISPLACEMENT - SECONDARY_RADIUS;
                 pY2 = pos.getY() - DISPLACEMENT + SECONDARY_RADIUS;
-                pZ1 = pos.getZ() - PRIMARY_RADIUS;
-                pZ2 = pos.getZ() + PRIMARY_RADIUS;
             }
             case NORTH -> {
-                pX1 = pos.getX() - PRIMARY_RADIUS;
-                pX2 = pos.getX() + PRIMARY_RADIUS;
-                pY1 = pos.getY() - PRIMARY_RADIUS;
-                pY2 = pos.getY() + PRIMARY_RADIUS;
                 pZ1 = pos.getZ() - DISPLACEMENT - SECONDARY_RADIUS;
                 pZ2 = pos.getZ() - DISPLACEMENT + SECONDARY_RADIUS;
             }
             case SOUTH -> {
-                pX1 = pos.getX() - PRIMARY_RADIUS;
-                pX2 = pos.getX() + PRIMARY_RADIUS;
-                pY1 = pos.getY() - PRIMARY_RADIUS;
-                pY2 = pos.getY() + PRIMARY_RADIUS;
                 pZ1 = pos.getZ() + DISPLACEMENT - SECONDARY_RADIUS;
                 pZ2 = pos.getZ() + DISPLACEMENT + SECONDARY_RADIUS;
             }
             case EAST -> {
                 pX1 = pos.getX() + DISPLACEMENT - SECONDARY_RADIUS;
                 pX2 = pos.getX() + DISPLACEMENT + SECONDARY_RADIUS;
-                pY1 = pos.getY() - PRIMARY_RADIUS;
-                pY2 = pos.getY() + PRIMARY_RADIUS;
-                pZ1 = pos.getZ() - PRIMARY_RADIUS;
-                pZ2 = pos.getZ() + PRIMARY_RADIUS;
             }
             case WEST -> {
                 pX1 = pos.getX() - DISPLACEMENT - SECONDARY_RADIUS;
                 pX2 = pos.getX() - DISPLACEMENT + SECONDARY_RADIUS;
-                pY1 = pos.getY() - PRIMARY_RADIUS;
-                pY2 = pos.getY() + PRIMARY_RADIUS;
-                pZ1 = pos.getZ() - PRIMARY_RADIUS;
-                pZ2 = pos.getZ() + PRIMARY_RADIUS;
             }
             default -> throw new IllegalStateException("Unexpected value: " + direction.getOpposite());
         }
