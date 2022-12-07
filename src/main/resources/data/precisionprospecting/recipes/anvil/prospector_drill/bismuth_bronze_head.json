@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "tag": "forge:double_ingots/bismuth_bronze"
+  },
+  "result": {
+    "item": "precisionprospecting:metal/prospector_drill_head/bismuth_bronze"
+  },
+  "tier": 2,
+  "rules": [
+    "punch_last",
+    "shrink_not_last"
+  ],
+  "apply_forging_bonus": true
+}

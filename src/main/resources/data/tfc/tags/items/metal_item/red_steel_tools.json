@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "precisionprospecting:metal/prospector_hammer/red_steel"
+    "precisionprospecting:metal/prospector_hammer/red_steel",
+    "precisionprospecting:metal/prospector_drill/red_steel"
   ]
 }

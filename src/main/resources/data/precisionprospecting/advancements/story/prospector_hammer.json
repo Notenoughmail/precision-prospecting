@@ -26,7 +26,7 @@
     "show_toast": true,
     "announce_to_chat": false,
     "hidden": false,
-    "background": "tfc:textures/block/rock/mossy_cobble/diorite.ong"
+    "background": "tfc:textures/block/rock/mossy_cobble/diorite.png"
   },
   "requirements": [
     [

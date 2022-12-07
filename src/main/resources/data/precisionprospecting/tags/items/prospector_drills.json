@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "precisionprospecting:metal/prospector_drill/bismuth_bronze",
+    "precisionprospecting:metal/prospector_drill/black_bronze",
+    "precisionprospecting:metal/prospector_drill/black_steel",
+    "precisionprospecting:metal/prospector_drill/blue_steel",
+    "precisionprospecting:metal/prospector_drill/bronze",
+    "precisionprospecting:metal/prospector_drill/copper",
+    "precisionprospecting:metal/prospector_drill/red_steel",
+    "precisionprospecting:metal/prospector_drill/steel",
+    "precisionprospecting:metal/prospector_drill/wrought_iron"
+  ]
+}

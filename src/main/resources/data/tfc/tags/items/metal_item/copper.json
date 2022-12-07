@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "precisionprospecting:metal/prospector_hammer_head/copper",
-    "precisionprospecting:metal/prospector_hammer/copper"
+    "precisionprospecting:metal/prospector_hammer/copper",
+    "precisionprospecting:metal/prospector_drill_head/copper",
+    "precisionprospecting:metal/prospector_drill/copper"
   ]
 }

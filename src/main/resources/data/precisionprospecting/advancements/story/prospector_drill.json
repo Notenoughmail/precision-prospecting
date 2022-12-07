@@ -1,0 +1,36 @@
+{
+  "parent": "tfc:story/propick",
+  "criteria": {
+    "prosdrills": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "taq": "precisionprospecting:prospector_drills"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "item": "precisionprospecting:metal/prospector_drill/copper"
+    },
+    "title": {
+      "translate": "precisionprospecting.advancements.story.prospector_drill.title"
+    },
+    "description": {
+      "translate": "precisionprospecting.advancements.story.prospector_drill.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "tfc:textures/block/rock/mossy_cobble/diorite.png"
+  },
+  "requirements": [
+    [
+      "prosdrills"
+    ]
+  ]
+}

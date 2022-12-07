@@ -1,0 +1,12 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "precisionprospecting:metal/prospector_drill/copper"
+    },
+  "result_fluid": {
+    "fluid": "tfc:metal/copper",
+    "amount": 400
+  },
+  "temperature": 1080,
+  "use_durability": true
+}

@@ -1,0 +1,25 @@
+{
+  "type": "tfc:advanced_shaped_crafting",
+  "pattern": [
+    "S",
+    "A"
+  ],
+  "key": {
+    "S": {
+      "item": "precisionprospecting:metal/prospector_drill_head/blue_steel"
+    },
+    "A": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "stack": {
+      "item": "precisionprospecting:metal/prospector_drill/blue_steel"
+    },
+    "modifiers": [
+      "tfc:copy_forging_bonus"
+    ]
+  },
+  "input_row": 0,
+  "input_column": 0
+}

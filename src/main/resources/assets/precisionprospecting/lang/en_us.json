@@ -17,9 +17,35 @@
   "item.precisionprospecting.metal.prospector_hammer_head.bismuth_bronze": "Bismuth Bronze Prospector's Hammer Head",
   "item.precisionprospecting.metal.prospector_hammer_head.bronze": "Bronze Prospector's Hammer Head",
   "item.precisionprospecting.metal.prospector_hammer_head.copper": "Copper Prospector's Hammer Head",
+
+  "item.precisionprospecting.metal.prospector_drill.red_steel": "Red Steel Prospector's Drill",
+  "item.precisionprospecting.metal.prospector_drill.blue_steel": "Blue Steel Prospector's Drill",
+  "item.precisionprospecting.metal.prospector_drill.black_steel": "Black Steel Prospector's Drill",
+  "item.precisionprospecting.metal.prospector_drill.steel": "Steel Prospector's Drill",
+  "item.precisionprospecting.metal.prospector_drill.wrought_iron": "Wrought Iron Prospector's Drill",
+  "item.precisionprospecting.metal.prospector_drill.black_bronze": "Black Bronze Prospector's Drill",
+  "item.precisionprospecting.metal.prospector_drill.bismuth_bronze": "Bismuth Bronze Prospector's Drill",
+  "item.precisionprospecting.metal.prospector_drill.bronze": "Bronze Prospector's Drill",
+  "item.precisionprospecting.metal.prospector_drill.copper": "Copper Prospector's Drill",
+  "item.precisionprospecting.metal.prospector_drill_head.red_steel": "Red Steel Prospector's Drill Head",
+  "item.precisionprospecting.metal.prospector_drill_head.blue_steel": "Blue Steel Prospector's Drill Head",
+  "item.precisionprospecting.metal.prospector_drill_head.black_steel": "Black Steel Prospector's Drill Head",
+  "item.precisionprospecting.metal.prospector_drill_head.steel": "Steel Prospector's Drill Head",
+  "item.precisionprospecting.metal.prospector_drill_head.wrought_iron": "Wrought Iron Prospector's Drill Head",
+  "item.precisionprospecting.metal.prospector_drill_head.black_bronze": "Black Bronze Prospector's Drill Head",
+  "item.precisionprospecting.metal.prospector_drill_head.bismuth_bronze": "Bismuth Bronze Prospector's Drill Head",
+  "item.precisionprospecting.metal.prospector_drill_head.bronze": "Bronze Prospector's Drill Head",
+  "item.precisionprospecting.metal.prospector_drill_head.copper": "Copper Prospector's Drill Head",
+
   "item.precisionprospecting.ceramic.unfired_prospector_hammer_head_mold": "Unfired Prospector's Hammer Head Mold",
   "item.precisionprospecting.ceramic.prospector_hammer_head_mold": "Prospector's Hammer Head Mold",
 
+  "item.precisionprospecting.ceramic.unfired_prospector_drill_head_mold": "Unfired Prospector's Drill Head Mold",
+  "item.precisionprospecting.ceramic.prospector_drill_head_mold":  "Prospector's Drill head Mold",
+
   "precisionprospecting.advancements.story.prospector_hammer.title": "Smaller Prospector",
-  "precisionprospecting.advancements.story.prospector_hammer.description": "Make a prospector's hammer"
+  "precisionprospecting.advancements.story.prospector_hammer.description": "Make a prospector's hammer",
+
+  "precisionprospecting.advancements.story.prospector_drill.title": "Directional Prospector",
+  "precisionprospecting.advancements.story.prospector_drill.description": "Make a prospector's drill"
 }

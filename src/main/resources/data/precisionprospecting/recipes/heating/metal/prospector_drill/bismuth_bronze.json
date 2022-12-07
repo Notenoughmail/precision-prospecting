@@ -1,0 +1,12 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "precisionprospecting:metal/prospector_drill/bismuth_bronze"
+  },
+  "result_fluid": {
+    "fluid": "tfc:metal/bismuth_bronze",
+    "amount": 400
+  },
+  "temperature": 985,
+  "use_durability": true
+}

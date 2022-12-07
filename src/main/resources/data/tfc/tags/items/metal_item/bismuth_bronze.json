@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "precisionprospecting:metal/prospector_hammer_head/bismuth_bronze",
-    "precisionprospecting:metal/prospector_hammer/bismuth_bronze"
+    "precisionprospecting:metal/prospector_hammer/bismuth_bronze",
+    "precisionprospecting:metal/prospector_drill_head/bismuth_bronze",
+    "precisionprospecting:metal/prospector_drill/bismuth_bronze"
   ]
 }

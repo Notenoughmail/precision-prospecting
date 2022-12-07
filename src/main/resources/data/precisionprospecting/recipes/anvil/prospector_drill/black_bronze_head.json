@@ -1,0 +1,16 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "item": "tfc:metal/tuyere/black_bronze"
+  },
+  "result": {
+    "item": "precisionprospecting:metal/prospector_drill_head/black_bronze"
+  },
+  "tier": 2,
+  "rules": [
+    "punch_last",
+    "hit_any",
+    "hit_any"
+  ],
+  "apply_forging_bonus": true
+}

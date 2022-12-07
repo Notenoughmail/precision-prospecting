@@ -1,0 +1,12 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "precisionprospecting:metal/prospector_drill/bronze"
+  },
+  "result_fluid": {
+    "fluid": "tfc:metal/bronze",
+    "amount": 400
+  },
+  "temperature": 950,
+  "use_durability": true
+}

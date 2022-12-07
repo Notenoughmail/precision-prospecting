@@ -1,0 +1,12 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "precisionprospecting:metal/prospector_drill/red_steel"
+  },
+  "result_fluid": {
+    "fluid": "tfc:metal/red_steel",
+    "amount": 400
+  },
+  "temperature": 1540,
+  "use_durability": true
+}

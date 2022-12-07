@@ -55,7 +55,7 @@ public class Registration {
             RED_STEEL_PROSDRILL = ITEMS.register("metal/prospector_drill/red_steel", () -> new ProsDrillItem(TFCTiers.RED_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.RED_STEEL), -3f, metal_properties())),
             RED_STEEL_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/red_steel", () -> new Item(metal_properties())),
             BLUE_STEEL_PROSDRILL = ITEMS.register("metal/prospector_drill/blue_steel", () -> new ProsDrillItem(TFCTiers.BLUE_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BLUE_STEEL), -3f, metal_properties())),
-            BLUE_STEEL_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/blue-steel", () -> new Item(metal_properties())),
+            BLUE_STEEL_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/blue_steel", () -> new Item(metal_properties())),
             BLACK_STEEL_PROSDRILL = ITEMS.register("metal/prospector_drill/black_steel", () -> new ProsDrillItem(TFCTiers.BLACK_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BLACK_STEEL), -3f, metal_properties())),
             BLACK_STEEL_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/black_steel", () -> new Item(metal_properties())),
             STEEL_PROSDRILL = ITEMS.register("metal/prospector_drill/steel", () -> new ProsDrillItem(TFCTiers.STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.STEEL), -3f, metal_properties())),

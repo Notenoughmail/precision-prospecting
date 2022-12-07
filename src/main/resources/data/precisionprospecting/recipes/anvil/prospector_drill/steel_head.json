@@ -1,0 +1,16 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "item": "tfc:metal/tuyere/steel"
+  },
+  "result": {
+    "item": "precisionprospecting:metal/prospector_drill_head/steel"
+  },
+  "tier": 4,
+  "rules": [
+    "punch_last",
+    "hit_any",
+    "hit_any"
+  ],
+  "apply_forging_bonus": true
+}
