@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "precisionprospecting:item/metal/prospector_drill_head/red_steel"
+  }
+}

@@ -5,42 +5,69 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Are you getting frustrated by the large range of your $(l:mechanics/prospecting)Prospector's Pick$()? Tired of digging around clueless as to the location of your riches? Well, despair no more, for the $(thing)Prospector's Hammer$() can help!"
+      "text": "Are you getting frustrated by the large range of your $(l:mechanics/prospecting)Prospector's Pick$()? Tired of digging around clueless as to the location of your riches? Well, despair no more, for a $(thing)Prospector's Hammer$() or $(thing)Prospector's Drill$() may be able to help!"
     },
     {
-      "type": "patchouli:text",
-      "text": "The Prospector's Hammer is a $(t:In more ways than one!)near copy$() of its pick-y brother, with the notable exception of a smaller range, only searching the 13x13x13 area centered on the block inspected, and slightly less accuracy overall. Very useful for finding veins that appear to be all around you."
+      "type": "patchouli:spotlight",
+      "item": "precisionprospecting:metal/prospector_hammer/bismuth_bronze",
+      "title": "Prospector's Hammer",
+      "text": "The Prospector's Hammer is a near copy of its pick-y brother, with the notable exception of a smaller range, only searching the 13x13x13 area centered on the block inspected. Very useful for finding veins that appear to be all around you."
     },
     {
       "type": "tfc:clay_knapping_recipe",
       "recipe": "precisionprospecting:clay_knapping/prospector_hammer_head_mold",
-      "text": "Much like with a Prospector's Pick, a Prospector's Hammer Head Mold can be made from $(l:getting_started/pottery)knapping$() some clay as shown above."
-    },
-    {
-      "type": "tfc:heat_recipe",
-      "recipe": "precisionprospecting:heating/prospector_hammer_head_mold",
-      "text": "Then, the mold can be $(l:mechanics/heating)fired$() to create a $(thing)Prospector's Hammer Head Mold$().$(br2)To create the tool head, $(l:getting_started/finding_ores#casting)cast$() liquid metal into the mold."
+      "text": "Much like with a Prospector's Pick, a Prospector's Hammer Head Mold can be made by $(l:getting_started/pottery)knapping$() some clay, as shown above, which can be heated and used to $(l:getting_started/finding_ores#casting)cast$() liquid metal."
     },
     {
       "type": "tfc:anvil_recipe",
-      "recipe": "precisionprospecting:anvil/bronze_prospector_hammer_head",
-      "text": "A Prospector's Hammer Head can also be $(l:mechanics/anvils#working)smithed$() out of a $(thing)double ingot$() of any tool metal on an $(l:mechanics/anvils)Anvil$(). Craft the tool head with a stick to make a Prospector's Hammer"
+      "recipe": "precisionprospecting:anvil/prospector_hammer/bronze_head",
+      "text": "A Prospector's Hammer Head can also be $(l:mechanics/anvils#working)smithed$() out of a $(thing)double ingot$() of any tool metal on an $(l:mechanics/anvils)Anvil$(). Craft the tool head with a stick to make a Prospector's Hammer."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "precisionprospecting:metal/prospector_drill/bismuth_bronze",
+      "title": "Prosepctor Drill",
+      "text": "If you're unsure of which direction a vein is in, it may be time to pull out a $(thing)Prospector's Drill$(). It searches a 7x25x7 area, with the long side being in-line with the clicked block side, centered 10 blocks away."
+    },
+    {
+      "type": "tfc:clay_knapping_recipe",
+      "recipe": "precisionprospecting:clay_knapping/prospector_drill_head_mold",
+      "text": "A Prospector's Drill Head Mold can be knapped from clay as seen above."
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "precisionprospecting:anvil/prospector_drill/bronze_head",
+      "text": "A Prospector's Drill Head can also be smithed out of a tuyere of any tool metal on an Anvil."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "precisionprospecting:crafting/metal/prospector_drill/bronze",
+      "text": "Craft the tool head with a pair of sticks to make a Prospector's Drill."
     },
     {
       "type": "patchouli:text",
-      "text": "Note that it will be rare to see a Prospector's Hammer report finding a $(thing)Very Large Sample$(), due to its reduced range."
+      "text": "Note that it will be rare to see a Prospector's Hammer or Drill report finding a $(thing)Very Large Sample$(), due to their smaller ranges."
     }
   ],
   "read_by_default": true,
   "extra_recipe_mappings": {
-    "precisionprospecting:metal/prospector_hammer/bismuth_bronze":  0,
-    "precisionprospecting:metal/prospector_hammer/black_bronze": 0,
-    "precisionprospecting:metal/prospector_hammer/bronze": 0,
-    "precisionprospecting:metal/prospector_hammer/copper": 0,
-    "precisionprospecting:metal/prospector_hammer/wrought_iron": 0,
-    "precisionprospecting:metal/prospector_hammer/steel": 0,
-    "precisionprospecting:metal/prospector_hammer/black_steel": 0,
-    "precisionprospecting:metal/prospector_hammer/blue_steel": 0,
-    "precisionprospecting:metal/prospector_hammer/red_steel": 0
+    "precisionprospecting:metal/prospector_hammer/bismuth_bronze":  2,
+    "precisionprospecting:metal/prospector_hammer/black_bronze": 2,
+    "precisionprospecting:metal/prospector_hammer/bronze": 2,
+    "precisionprospecting:metal/prospector_hammer/copper": 2,
+    "precisionprospecting:metal/prospector_hammer/wrought_iron": 2,
+    "precisionprospecting:metal/prospector_hammer/steel": 2,
+    "precisionprospecting:metal/prospector_hammer/black_steel": 2,
+    "precisionprospecting:metal/prospector_hammer/blue_steel": 2,
+    "precisionprospecting:metal/prospector_hammer/red_steel": 2,
+    "precisionprospecting:metal/prospector_drill/bismuth_bronze": 4,
+    "precisionprospecting:metal/prospector_drill/black_bronze": 4,
+    "precisionprospecting:metal/prospector_drill/bronze": 4,
+    "precisionprospecting:metal/prospector_drill/copper": 4,
+    "precisionprospecting:metal/prospector_drill/wrought_iron": 4,
+    "precisionprospecting:metal/prospector_drill/steel": 4,
+    "precisionprospecting:metal/prospector_drill/black_steel": 4,
+    "precisionprospecting:metal/prospector_drill/blue_steel": 4,
+    "precisionprospecting:metal/prospector_drill/red_steel": 4
   }
 }

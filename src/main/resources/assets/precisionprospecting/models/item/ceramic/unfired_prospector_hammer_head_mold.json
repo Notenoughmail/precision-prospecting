@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "precisionprospecting:item/ceramic/unfired_prospector_hammer_head_mold"
+    "layer0": "precisionprospecting:item/ceramic/prospector_hammer/unfired_head_mold"
   }
 }

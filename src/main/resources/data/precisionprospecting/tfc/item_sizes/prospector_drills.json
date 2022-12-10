@@ -1,31 +1,7 @@
 {
   "ingredient": [
     {
-      "item": "precisionprospecting:metal/prospector_drill/bismuth_bronze"
-    },
-    {
-      "item": "precisionprospecting:metal/prospector_drill/black_bronze"
-    },
-    {
-      "item": "precisionprospecting:metal/prospector_drill/black_steel"
-    },
-    {
-      "item": "precisionprospecting:metal/prospector_drill/blue_steel"
-    },
-    {
-      "item": "precisionprospecting:metal/prospector_drill/bronze"
-    },
-    {
-      "item": "precisionprospecting:metal/prospector_drill/copper"
-    },
-    {
-      "item": "precisionprospecting:metal/prospector_drill/red_steel"
-    },
-    {
-      "item": "precisionprospecting:metal/prospector_drill/steel"
-    },
-    {
-      "item": "precisionprospecting:metal/prospector_drill/wrought_iron"
+      "tag": "precisionprospecting:prospector_drills"
     }
   ],
   "size": "very_large",
