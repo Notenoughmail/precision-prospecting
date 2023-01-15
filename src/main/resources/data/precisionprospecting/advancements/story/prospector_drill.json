@@ -6,7 +6,7 @@
       "conditions": {
         "items": [
           {
-            "taq": "precisionprospecting:prospector_drills"
+            "tag": "precisionprospecting:prospector_drills"
           }
         ]
       }

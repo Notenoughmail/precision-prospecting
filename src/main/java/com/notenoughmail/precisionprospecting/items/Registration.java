@@ -10,13 +10,19 @@ import net.dries007.tfc.common.TFCItemGroup;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.items.MoldItem;
 import net.dries007.tfc.common.items.ToolItem;
-import net.dries007.tfc.common.TFCTiers;
+import net.dries007.tfc.util.Helpers;
+import net.dries007.tfc.util.Metal;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.apache.commons.codec.language.bm.Lang;
+
+import java.util.Locale;
+import java.util.Map;
+import java.util.function.Supplier;
 
 import static com.notenoughmail.precisionprospecting.PrecisionProspecting.MODID;
 import static com.notenoughmail.precisionprospecting.config.PrecProsConfig.moldProsDrillCapacity;
@@ -31,52 +37,33 @@ public class Registration {
         ITEMS.register(bus);
     }
 
-    //This hurts, but I don't feel like finagling with Maps and whatnot right now
+    public static final Map<Metal.Default, RegistryObject<Item>> PROSHAMMERS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
+            register("metal/prospector_hammer/" + metal.name(), () ->
+                    new ProsHammerItem(metal.toolTier(), (int) ToolItem.calculateVanillaAttackDamage(0.6f, metal.toolTier()), -3f, metal_properties(), "minecraft")
+            )
+    );
+    public static final Map<Metal.Default, RegistryObject<Item>> PROSHAMMER_HEADS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
+            register("metal/prospector_hammer_head/" + metal.name(), () ->
+                    new HideableItem(metal_properties(), "minecraft")
+            )
+    );
+    public static final Map<Metal.Default, RegistryObject<Item>> PROSDRILLS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
+            register("metal/prospector_drill/" + metal.name(), () ->
+                    new ProsDrillItem(metal.toolTier(), (int) ToolItem.calculateVanillaAttackDamage(0.6f, metal.toolTier()), -3f, metal_properties(), "minecraft")
+            )
+    );
+    public static final Map<Metal.Default, RegistryObject<Item>> PROSDRILL_HEADS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
+            register("metal/prospector_drill_head/" + metal.name(), () ->
+                    new HideableItem(metal_properties(), "minecraft")
+            )
+    );
     public static final RegistryObject<Item>
-            RED_STEEL_PROSHAMMER = ITEMS.register("metal/prospector_hammer/red_steel", () -> new ProsHammerItem(TFCTiers.RED_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.RED_STEEL), -3f, metal_properties())),
-            RED_STEEL_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/red_steel", () -> new Item(metal_properties())),
-            BLUE_STEEL_PROSHAMMER = ITEMS.register("metal/prospector_hammer/blue_steel", () -> new ProsHammerItem(TFCTiers.BLUE_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BLUE_STEEL), -3f, metal_properties())),
-            BLUE_STEEL_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/blue_steel", () -> new Item(metal_properties())),
-            BLACK_STEEL_PROSHAMMER = ITEMS.register("metal/prospector_hammer/black_steel", () -> new ProsHammerItem(TFCTiers.BLACK_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BLACK_STEEL), -3f, metal_properties())),
-            BLACK_STEEL_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/black_steel", () -> new Item(metal_properties())),
-            STEEL_PROSHAMMER = ITEMS.register("metal/prospector_hammer/steel", () -> new ProsHammerItem(TFCTiers.STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.STEEL), -3f, metal_properties())),
-            STEEL_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/steel", () -> new Item(metal_properties())),
-            WROUGHT_IRON_PROSHAMMER = ITEMS.register("metal/prospector_hammer/wrought_iron", () -> new ProsHammerItem(TFCTiers.WROUGHT_IRON, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.WROUGHT_IRON), -3f, metal_properties())),
-            WROUGHT_IRON_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/wrought_iron", () -> new Item(metal_properties())),
-            BLACK_BRONZE_PROSHAMMER = ITEMS.register("metal/prospector_hammer/black_bronze", () -> new ProsHammerItem(TFCTiers.BLACK_BRONZE, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BLACK_BRONZE), -3f, metal_properties())),
-            BLACK_BRONzE_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/black_bronze", () -> new Item(metal_properties())),
-            BIZ_BRONZE_PROSHAMMER =ITEMS.register("metal/prospector_hammer/bismuth_bronze", () -> new ProsHammerItem(TFCTiers.BISMUTH_BRONZE, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BISMUTH_BRONZE), -3f, metal_properties())),
-            BIZ_BRONZE_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/bismuth_bronze", () -> new Item(metal_properties())),
-            BRONZE_PROSHAMMER = ITEMS.register("metal/prospector_hammer/bronze", () -> new ProsHammerItem(TFCTiers.BRONZE, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BRONZE), -3f, metal_properties())),
-            BRONZE_PROSHAMMER_HEAD =ITEMS.register("metal/prospector_hammer_head/bronze", () -> new Item(metal_properties())),
-            COPPER_PROSHAMMER = ITEMS.register("metal/prospector_hammer/copper", () -> new ProsHammerItem(TFCTiers.COPPER, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.COPPER), -3f, metal_properties())),
-            COPPER_PROSHAMMER_HEAD = ITEMS.register("metal/prospector_hammer_head/copper", () -> new Item(metal_properties())),
-
-            RED_STEEL_PROSDRILL = ITEMS.register("metal/prospector_drill/red_steel", () -> new ProsDrillItem(TFCTiers.RED_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.RED_STEEL), -3f, metal_properties())),
-            RED_STEEL_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/red_steel", () -> new Item(metal_properties())),
-            BLUE_STEEL_PROSDRILL = ITEMS.register("metal/prospector_drill/blue_steel", () -> new ProsDrillItem(TFCTiers.BLUE_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BLUE_STEEL), -3f, metal_properties())),
-            BLUE_STEEL_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/blue_steel", () -> new Item(metal_properties())),
-            BLACK_STEEL_PROSDRILL = ITEMS.register("metal/prospector_drill/black_steel", () -> new ProsDrillItem(TFCTiers.BLACK_STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BLACK_STEEL), -3f, metal_properties())),
-            BLACK_STEEL_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/black_steel", () -> new Item(metal_properties())),
-            STEEL_PROSDRILL = ITEMS.register("metal/prospector_drill/steel", () -> new ProsDrillItem(TFCTiers.STEEL, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.STEEL), -3f, metal_properties())),
-            STEEL_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/steel", () -> new Item(metal_properties())),
-            WROUGHT_IRON_PROSDRILL = ITEMS.register("metal/prospector_drill/wrought_iron", () -> new ProsDrillItem(TFCTiers.WROUGHT_IRON, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.WROUGHT_IRON), -3f, metal_properties())),
-            WROUGHT_IRON_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/wrought_iron", () -> new Item(metal_properties())),
-            BLACK_BRONZE_PROSDRILL = ITEMS.register("metal/prospector_drill/black_bronze", () -> new ProsDrillItem(TFCTiers.BLACK_BRONZE, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BLACK_BRONZE), -3f, metal_properties())),
-            BLACK_BRONZE_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/black_bronze", () -> new Item(metal_properties())),
-            BIZ_BRONZE_PROSDRILL = ITEMS.register("metal/prospector_drill/bismuth_bronze", () -> new ProsDrillItem(TFCTiers.BISMUTH_BRONZE, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BISMUTH_BRONZE), -3f, metal_properties())),
-            BIZ_BRONZE_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/bismuth_bronze", () -> new Item(metal_properties())),
-            BRONZE_PROSDRILL = ITEMS.register("metal/prospector_drill/bronze", () -> new ProsDrillItem(TFCTiers.BRONZE, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.BRONZE), -3f, metal_properties())),
-            BRONZE_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/bronze", () -> new Item(metal_properties())),
-            COPPER_PROSDRILL = ITEMS.register("metal/prospector_drill/copper", () -> new ProsDrillItem(TFCTiers.COPPER, (int) ToolItem.calculateVanillaAttackDamage(0.6f, TFCTiers.COPPER), -3f, metal_properties())),
-            COPPER_PROSDRILL_HEAD = ITEMS.register("metal/prospector_drill_head/copper", () -> new Item(metal_properties())),
-
             UNFIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/unfired_prospector_hammer_head_mold", () -> new Item(ceramic_properties())),
             FIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/prospector_hammer_head_mold", () -> new MoldItem(() -> moldProsHammerCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties())),
             UNFIRED_PROSDRILL_MOLD = ITEMS.register("ceramic/unfired_prospector_drill_head_mold", () -> new Item(ceramic_properties())),
             FIRED_PROSDRILL_MOLD = ITEMS.register("ceramic/prospector_drill_head_mold", () -> new MoldItem(() -> moldProsDrillCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties()))
                     ;
-                    //Big thanks to Alc on Discord for telling me you can just pass in a lambda like this, which makes sense now that I think about it
+    // Big thanks to Alc on Discord for telling me you can just pass in a lambda like this, which makes sense now that I think about it
 
     public static Item.Properties metal_properties() {
         return new Item.Properties().tab(TFCItemGroup.METAL);
@@ -86,4 +73,7 @@ public class Registration {
         return new Item.Properties().tab(TFCItemGroup.MISC);
     }
 
+    private static <T extends Item> RegistryObject<Item> register(String name, Supplier<T> item) {
+        return ITEMS.register(name.toLowerCase(Locale.ROOT), item);
+    }
 }

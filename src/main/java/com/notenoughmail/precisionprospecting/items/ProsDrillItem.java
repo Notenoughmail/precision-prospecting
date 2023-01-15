@@ -9,7 +9,7 @@ package com.notenoughmail.precisionprospecting.items;
 import net.minecraft.world.item.Tier;
 
 public class ProsDrillItem extends ProspectorItem {
-    public ProsDrillItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
-        super(tier, attackDamage, attackSpeed, properties, 30, 3, 12, 10);
+    public ProsDrillItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, String mod) {
+        super(tier, attackDamage, attackSpeed, properties, 30, 3, 12, 10, mod);
     }
 }
