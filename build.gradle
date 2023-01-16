@@ -114,6 +114,21 @@ repositories {
         name = "BlameJared"
         url = "https://maven.blamejared.com"
     }
+    maven {
+        // Shedaniel's maven (Architectury API)
+        url = "https://maven.architectury.dev"
+        content {
+            includeGroup "dev.architectury"
+        }
+    }
+
+    maven {
+        // saps.dev Maven (KubeJS and Rhino)
+        url = "https://maven.saps.dev/minecraft"
+        content {
+            includeGroup "dev.latvian.mods"
+        }
+    }
     flatDir {
         dir 'libs'
     }
@@ -123,7 +138,6 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.73'
 
     implementation fg.deobf("curse.maven:terrafirmacraft-302973:${tfc_identifier}")
-    implementation fg.deobf("tfc_metallum:TFC_Metallum_1.18.2:${metallum_identifier}")
 
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api"))
     implementation(fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}"))
@@ -135,6 +149,10 @@ dependencies {
     runtimeOnly(fg.deobf("curse.maven:jade-324717:${jade_version}"))
 
     compileOnly(fg.deobf("curse.maven:top-245211:${top_version}"))
+
+    implementation fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}")
+    implementation fg.deobf("dev.latvian.mods:rhino:${rhino_version}")
+    implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

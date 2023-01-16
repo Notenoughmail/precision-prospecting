@@ -18,8 +18,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.apache.commons.codec.language.bm.Lang;
-
 import java.util.Locale;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -39,22 +37,22 @@ public class Registration {
 
     public static final Map<Metal.Default, RegistryObject<Item>> PROSHAMMERS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
             register("metal/prospector_hammer/" + metal.name(), () ->
-                    new ProsHammerItem(metal.toolTier(), (int) ToolItem.calculateVanillaAttackDamage(0.6f, metal.toolTier()), -3f, metal_properties(), "minecraft")
+                    new ProsHammerItem(metal.toolTier(), (int) ToolItem.calculateVanillaAttackDamage(0.6f, metal.toolTier()), -3f, metal_properties())
             )
     );
     public static final Map<Metal.Default, RegistryObject<Item>> PROSHAMMER_HEADS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
             register("metal/prospector_hammer_head/" + metal.name(), () ->
-                    new HideableItem(metal_properties(), "minecraft")
+                    new Item(metal_properties())
             )
     );
     public static final Map<Metal.Default, RegistryObject<Item>> PROSDRILLS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
             register("metal/prospector_drill/" + metal.name(), () ->
-                    new ProsDrillItem(metal.toolTier(), (int) ToolItem.calculateVanillaAttackDamage(0.6f, metal.toolTier()), -3f, metal_properties(), "minecraft")
+                    new ProsDrillItem(metal.toolTier(), (int) ToolItem.calculateVanillaAttackDamage(0.6f, metal.toolTier()), -3f, metal_properties())
             )
     );
     public static final Map<Metal.Default, RegistryObject<Item>> PROSDRILL_HEADS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
             register("metal/prospector_drill_head/" + metal.name(), () ->
-                    new HideableItem(metal_properties(), "minecraft")
+                    new Item(metal_properties())
             )
     );
     public static final RegistryObject<Item>

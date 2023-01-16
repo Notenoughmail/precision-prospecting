@@ -24,7 +24,6 @@ import net.dries007.tfc.util.events.ProspectedEvent;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -32,7 +31,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
@@ -42,7 +40,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.network.PacketDistributor;
 
 import javax.annotation.Nullable;
@@ -59,8 +56,6 @@ public class ProspectorItem extends ToolItem {
 
     private static final Random RANDOM = new Random();
 
-    private final boolean isModLoaded;
-
     public static Object2IntMap<BlockState> scanAreaFor(Level level, TagKey<Block> tag, int pX1, int pY1, int pZ1, int pX2, int pY2, int pZ2) {
         Object2IntMap<BlockState> results = new Object2IntOpenHashMap<>();
         for (BlockPos cursor : BlockPos.betweenClosed(pX1, pY1, pZ1, pX2, pY2, pZ2)) {
@@ -74,14 +69,12 @@ public class ProspectorItem extends ToolItem {
 
     private final float falseNegativeChance;
 
-    public ProspectorItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, int cooldown, int primaryRadius, int secondaryRadius, int displacement, String mod) {
+    public ProspectorItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, int cooldown, int primaryRadius, int secondaryRadius, int displacement) {
         super(tier, attackDamage, attackSpeed, TFCTags.Blocks.MINEABLE_WITH_PROPICK, properties);
         this.COOLDOWN = cooldown;
         this.PRIMARY_RADIUS = primaryRadius;
         this.SECONDARY_RADIUS = secondaryRadius;
         this.DISPLACEMENT = displacement;
-
-        this.isModLoaded = ModList.get().isLoaded(mod);
 
         this.falseNegativeChance = 0.3f - Mth.clamp(tier.getLevel(), 0, 5) * (0.3f / 5f);
     }
@@ -172,13 +165,5 @@ public class ProspectorItem extends ToolItem {
         if (flag.isAdvanced()) {
             text.add(Helpers.translatable("tfc.tooltip.propick.accuracy", (int) (100 * (1 - falseNegativeChance))).withStyle(ChatFormatting.GRAY));
         }
-    }
-
-    @Override
-    public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> stack) {
-        if (!this.isModLoaded) {
-            return;
-        }
-        super.fillItemCategory(tab, stack);
     }
 }

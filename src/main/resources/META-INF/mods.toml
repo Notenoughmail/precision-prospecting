@@ -49,8 +49,8 @@ issueTrackerURL="https://github.com/Notenoughmail/precision-prospecting/issues"
     side = "BOTH"
 
 [[dependencies.precisionprospecting]]
-    modId = "tfc_metallum"
+    modId = "kubejs"
     mandatory = false
-    versionRange = "[0.0.1,)"
+    versionRange = "[1802.5.4-build.521,)"
     ordering = "AFTER"
     side = "BOTH"
