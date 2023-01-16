@@ -121,7 +121,6 @@ repositories {
             includeGroup "dev.architectury"
         }
     }
-
     maven {
         // saps.dev Maven (KubeJS and Rhino)
         url = "https://maven.saps.dev/minecraft"
