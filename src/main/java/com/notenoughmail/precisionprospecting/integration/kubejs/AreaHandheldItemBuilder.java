@@ -39,6 +39,13 @@ public class AreaHandheldItemBuilder extends HandheldItemBuilder {
         return this;
     }
 
+    public HandheldItemBuilder dimensionsBaseline(int primary, int secondary, int displacement) {
+        primaryRadiusBaseline = primary;
+        secondaryRadiusBaseline = secondary;
+        displacementBaseline = displacement;
+        return this;
+    }
+
     @Override
     public Item createObject() {
         return null;
