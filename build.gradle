@@ -31,7 +31,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: '2022.09.04-1.18.2'
+    mappings channel: 'parchment', version: '2022.11.06-1.18.2'
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
 
@@ -104,7 +104,8 @@ repositories {
     }
     maven {
         // Jade
-        url 'https://www.cursemaven.com'
+        name = "Curse Maven"
+        url = "https://www.cursemaven.com"
         content {
             includeGroup "curse.maven"
         }
@@ -123,6 +124,7 @@ repositories {
     }
     maven {
         // saps.dev Maven (KubeJS and Rhino)
+        name = "saps.dev"
         url = "https://maven.saps.dev/minecraft"
         content {
             includeGroup "dev.latvian.mods"
@@ -150,7 +152,7 @@ dependencies {
     compileOnly(fg.deobf("curse.maven:top-245211:${top_version}"))
 
     implementation fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}")
-    implementation fg.deobf("dev.latvian.mods:rhino:${rhino_version}")
+    implementation fg.deobf("dev.latvian.mods:rhino-forge:${rhino_version}")
     implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
 }
 
