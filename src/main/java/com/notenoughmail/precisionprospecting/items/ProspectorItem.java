@@ -53,6 +53,7 @@ public class ProspectorItem extends ToolItem {
     public int PRIMARY_RADIUS;
     public int SECONDARY_RADIUS;
     public int DISPLACEMENT;
+    public TagKey<Block> PROSPECT_TAG;
 
     private static final Random RANDOM = new Random();
 
@@ -69,12 +70,13 @@ public class ProspectorItem extends ToolItem {
 
     private final float falseNegativeChance;
 
-    public ProspectorItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, int cooldown, int primaryRadius, int secondaryRadius, int displacement) {
+    public ProspectorItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, int cooldown, int primaryRadius, int secondaryRadius, int displacement, TagKey<Block> prospectTag) {
         super(tier, attackDamage, attackSpeed, TFCTags.Blocks.MINEABLE_WITH_PROPICK, properties);
         this.COOLDOWN = cooldown;
         this.PRIMARY_RADIUS = primaryRadius;
         this.SECONDARY_RADIUS = secondaryRadius;
         this.DISPLACEMENT = displacement;
+        this.PROSPECT_TAG = prospectTag;
 
         this.falseNegativeChance = 0.3f - Mth.clamp(tier.getLevel(), 0, 5) * (0.3f / 5f);
     }
@@ -133,7 +135,7 @@ public class ProspectorItem extends ToolItem {
             ProspectResult result;
             BlockState found = state;
             RANDOM.setSeed(Helpers.hash(1564454769121215456L, pos));
-            if (Helpers.isBlock(state, TFCTags.Blocks.PROSPECTABLE)) {
+            if (Helpers.isBlock(state, this.PROSPECT_TAG)) {
                 result = ProspectResult.FOUND;
             } else if (RANDOM.nextFloat() < falseNegativeChance) {
                 result = ProspectResult.NOTHING;

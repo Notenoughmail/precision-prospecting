@@ -1,8 +1,11 @@
 package com.notenoughmail.precisionprospecting.integration.kubejs;
 
 import dev.latvian.mods.kubejs.item.custom.HandheldItemBuilder;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 public class AreaHandheldItemBuilder extends HandheldItemBuilder {
 
@@ -10,13 +13,15 @@ public class AreaHandheldItemBuilder extends HandheldItemBuilder {
     public transient int primaryRadiusBaseline;
     public transient int secondaryRadiusBaseline;
     public transient int displacementBaseline;
+    public transient TagKey<Block> prospectableBaseline;
 
-    public AreaHandheldItemBuilder(ResourceLocation i, float d, float s, int coolDown, int primaryRadius, int secondaryRadius, int displacement) {
+    public AreaHandheldItemBuilder(ResourceLocation i, float d, float s, int coolDown, int primaryRadius, int secondaryRadius, int displacement, TagKey<Block> prospectTag) {
         super(i, d, s);
         coolDownBaseline = coolDown;
         primaryRadiusBaseline = primaryRadius;
         secondaryRadiusBaseline = secondaryRadius;
         displacementBaseline = displacement;
+        prospectableBaseline = prospectTag;
     }
 
     public HandheldItemBuilder coolDownBaseline(int i) {
@@ -43,6 +48,12 @@ public class AreaHandheldItemBuilder extends HandheldItemBuilder {
         primaryRadiusBaseline = primary;
         secondaryRadiusBaseline = secondary;
         displacementBaseline = displacement;
+        return this;
+    }
+
+    // This is how KubeJS does it, hopefully it works
+    public HandheldItemBuilder prospectBlockTag(ResourceLocation tag) {
+        prospectableBaseline = TagKey.create(Registry.BLOCK_REGISTRY, tag);
         return this;
     }
 

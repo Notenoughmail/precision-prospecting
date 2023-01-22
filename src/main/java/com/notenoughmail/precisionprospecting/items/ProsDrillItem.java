@@ -6,10 +6,11 @@
 
 package com.notenoughmail.precisionprospecting.items;
 
+import net.dries007.tfc.common.TFCTags;
 import net.minecraft.world.item.Tier;
 
 public class ProsDrillItem extends ProspectorItem {
     public ProsDrillItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
-        super(tier, attackDamage, attackSpeed, properties, 30, 3, 12, 10);
+        super(tier, attackDamage, attackSpeed, properties, 30, 3, 12, 10, TFCTags.Blocks.PROSPECTABLE);
     }
 }
