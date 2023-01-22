@@ -24,6 +24,7 @@ public class PrecProsConfig {
 
     public static ForgeConfigSpec.IntValue moldProsHammerCapacity;
     public static ForgeConfigSpec.IntValue moldProsDrillCapacity;
+    public static ForgeConfigSpec.IntValue moldMineralProspectorCapacity;
 
     private static void registerServerConfig(ForgeConfigSpec.Builder builder) {
         builder.comment("This is the config for Precision Prospecting");
@@ -34,8 +35,12 @@ public class PrecProsConfig {
                 .defineInRange("moldProsHammerCapacity", 200, 0, Alloy.MAX_ALLOY);
 
         moldProsDrillCapacity = builder
-                .comment("Tank Capacity of a Prospector's Drill head mold (in mB).")
+                .comment("Tank capacity of a Prospector's Drill head mold (in mB).")
                 .defineInRange("moldProsDrillCapacity", 400, 0, Alloy.MAX_ALLOY);
+
+        moldMineralProspectorCapacity = builder
+                .comment("Tank capacity of a Mineral Prospector head mold (in mB).")
+                .defineInRange("moldMineralProspectorCapacity", 200, 0, Alloy.MAX_ALLOY );
 
         builder.pop();
     }

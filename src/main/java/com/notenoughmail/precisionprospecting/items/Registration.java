@@ -23,8 +23,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 import static com.notenoughmail.precisionprospecting.PrecisionProspecting.MODID;
-import static com.notenoughmail.precisionprospecting.config.PrecProsConfig.moldProsDrillCapacity;
-import static com.notenoughmail.precisionprospecting.config.PrecProsConfig.moldProsHammerCapacity;
+import static com.notenoughmail.precisionprospecting.config.PrecProsConfig.*;
 
 public class Registration {
 
@@ -55,11 +54,23 @@ public class Registration {
                     new Item(metal_properties())
             )
     );
+    public static final Map<Metal.Default, RegistryObject<Item>> MINERAL_PROSPECTORS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
+            register("metal/mineral_prospector/" + metal.name(), () ->
+                    new MineralProspectorItem(metal.toolTier(), (int) ToolItem.calculateVanillaAttackDamage(0.3f, metal.toolTier()), -2.8f, metal_properties())
+            )
+    );
+    public static final Map<Metal.Default, RegistryObject<Item>> MINERAL_PROSPECTOR_HEADS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
+            register("metal/mineral_prospector_head/" + metal.name(), () ->
+                    new Item(metal_properties())
+            )
+    );
     public static final RegistryObject<Item>
             UNFIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/unfired_prospector_hammer_head_mold", () -> new Item(ceramic_properties())),
             FIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/prospector_hammer_head_mold", () -> new MoldItem(() -> moldProsHammerCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties())),
             UNFIRED_PROSDRILL_MOLD = ITEMS.register("ceramic/unfired_prospector_drill_head_mold", () -> new Item(ceramic_properties())),
-            FIRED_PROSDRILL_MOLD = ITEMS.register("ceramic/prospector_drill_head_mold", () -> new MoldItem(() -> moldProsDrillCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties()))
+            FIRED_PROSDRILL_MOLD = ITEMS.register("ceramic/prospector_drill_head_mold", () -> new MoldItem(() -> moldProsDrillCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties())),
+            UNFIRED_MINERAL_PROSPECTOR_MOLD = ITEMS.register("ceramic/unfired_mineral_prospector_head_mold", () -> new Item(ceramic_properties())),
+            FIRED_MINERAL_PROSPECTOR_MOLD = ITEMS.register("ceramic/mineral_prospector_head_mold", () -> new MoldItem(() -> moldMineralProspectorCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties()))
                     ;
     // Big thanks to Alc on Discord for telling me you can just pass in a lambda like this, which makes sense now that I think about it
 

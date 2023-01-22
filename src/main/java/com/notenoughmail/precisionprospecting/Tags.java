@@ -1,4 +1,4 @@
-package com.notenoughmail.precisionprospecting.items;
+package com.notenoughmail.precisionprospecting;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
