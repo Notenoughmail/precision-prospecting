@@ -140,7 +140,7 @@ public class ProspectorItem extends ToolItem {
             } else if (RANDOM.nextFloat() < falseNegativeChance) {
                 result = ProspectResult.NOTHING;
             } else {
-                Object2IntMap<BlockState> states = scanAreaFor(level, TFCTags.Blocks.PROSPECTABLE, pX1, pY1, pZ1, pX2, pY2, pZ2);
+                Object2IntMap<BlockState> states = scanAreaFor(level, this.PROSPECT_TAG, pX1, pY1, pZ1, pX2, pY2, pZ2);
                 if (states.isEmpty()) {
                     result = ProspectResult.NOTHING;
                 } else {
