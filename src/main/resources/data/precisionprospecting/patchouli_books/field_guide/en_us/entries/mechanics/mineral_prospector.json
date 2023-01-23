@@ -1,0 +1,39 @@
+{
+  "name": "Where Are the Minerals?",
+  "category": "tfc:mechanics",
+  "icon": "precisionprospecting:metal/mineral_prospector/copper",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Are you tired of tired of looking minerals like $(thing)gypsum$() to build or $(thing)kaolinite$() and $(thing)graphite$() to make your $(l:mechanics/blast_furnace)Blast Furnace$(), but keep finding metals? You're in luck, as the $(thing)Mineral Prospector$() can help!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "precisionprospecting:metal/mineral_prospector/bismuth_bronze",
+      "title": "Mineral Prospector",
+      "text": "The Mineral Prospector is a variation on the classic $(l:mechanics/prospecting)Prospector's Pick$(). Instead of reporting any nearby ores, it reports any $(t:Non-metal ores)minerals$() in the 45x45x45 area centered on the clicked block."
+    },
+    {
+      "type": "tfc:clay_knapping_recipe",
+      "recipe": "precision_prospecting:clay_knapping/mineral_prospector_head_mold",
+      "text": "A Mineral Prospector Head Mold can be $(l:getting_started/pottery)knapped$() from clay, as seen above."
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "precisionprospecting:anvil/mineral_prospector/bronze_head",
+      "text": "A Mineral Prospector Head can also be smithed out of a $(thing)double ingot$() of any tool metal on an $(l:mechanics/anvils)Anvil$(). Craft the tool head with a stick to make a Mineral Prospector"
+    }
+  ],
+  "read_by_default": true,
+  "extra_recipe_mappings": {
+    "precisionprospecting:metal/mineral_prospector/bismuth_bronze":  2,
+    "precisionprospecting:metal/mineral_prospector/black_bronze": 2,
+    "precisionprospecting:metal/mineral_prospector/bronze": 2,
+    "precisionprospecting:metal/mineral_prospector/copper": 2,
+    "precisionprospecting:metal/mineral_prospector/wrought_iron": 2,
+    "precisionprospecting:metal/mineral_prospector/steel": 2,
+    "precisionprospecting:metal/mineral_prospector/black_steel": 2,
+    "precisionprospecting:metal/mineral_prospector/blue_steel": 2,
+    "precisionprospecting:metal/mineral_prospector/red_steel": 2
+  }
+}

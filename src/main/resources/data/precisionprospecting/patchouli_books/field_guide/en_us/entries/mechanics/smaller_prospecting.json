@@ -26,7 +26,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "precisionprospecting:metal/prospector_drill/bismuth_bronze",
-      "title": "Prosepctor Drill",
+      "title": "Prospector's Drill",
       "text": "If you're unsure of which direction a vein is in, it may be time to pull out a $(thing)Prospector's Drill$(). It searches a 7x25x7 area, with the long side being in-line with the clicked block side, centered 10 blocks away."
     },
     {
