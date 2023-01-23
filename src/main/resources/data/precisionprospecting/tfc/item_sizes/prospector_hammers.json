@@ -1,9 +1,7 @@
 {
-  "ingredient": [
-    {
+  "ingredient": {
       "tag": "precisionprospecting:prospector_hammers"
-    }
-  ],
+  },
   "size": "very_large",
   "weight": "very_heavy"
 }

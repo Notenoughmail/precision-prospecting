@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "precisionprospecting:item/ceramic/mineral_prospector/unfired_head_mold"
+  }
+}

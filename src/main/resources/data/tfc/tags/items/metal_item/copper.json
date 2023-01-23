@@ -4,6 +4,8 @@
     "precisionprospecting:metal/prospector_hammer_head/copper",
     "precisionprospecting:metal/prospector_hammer/copper",
     "precisionprospecting:metal/prospector_drill_head/copper",
-    "precisionprospecting:metal/prospector_drill/copper"
+    "precisionprospecting:metal/prospector_drill/copper",
+    "precisionprospecting:metal/mineral_prospector_head/copper",
+    "precisionprospecting:metal/mineral_prospector/copper"
   ]
 }

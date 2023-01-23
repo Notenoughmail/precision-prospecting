@@ -1,9 +1,7 @@
 {
-  "ingredient": [
-    {
+  "ingredient": {
       "tag": "precisionprospecting:prospector_drills"
-    }
-  ],
+  },
   "size": "very_large",
   "weight": "very_heavy"
 }

@@ -4,6 +4,8 @@
     "precisionprospecting:metal/prospector_hammer_head/black_bronze",
     "precisionprospecting:metal/prospector_hammer/black_bronze",
     "precisionprospecting:metal/prospector_drill_head/black_bronze",
-    "precisionprospecting:metal/prospector_drill/black_bronze"
+    "precisionprospecting:metal/prospector_drill/black_bronze",
+    "precisionprospecting:metal/mineral_prospector_head/black_bronze",
+    "precisionprospecting:metal/mineral_prospector/black_bronze"
   ]
 }

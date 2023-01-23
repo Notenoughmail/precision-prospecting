@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "precisionprospecting:metal/prospector_hammer/black_steel",
-    "precisionprospecting:metal/prospector_drill/black_steel"
+    "precisionprospecting:metal/prospector_drill/black_steel",
+    "precisionprospecting:metal/mineral_prospector/black_steel"
   ]
 }

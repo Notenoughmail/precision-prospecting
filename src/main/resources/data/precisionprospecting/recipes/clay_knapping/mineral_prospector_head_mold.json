@@ -1,0 +1,13 @@
+{
+  "type": "tfc:clay_knapping",
+  "pattern": [
+    "XXXXX",
+    "X   x",
+    "   XX",
+    "X   x",
+    "XXXXX"
+  ],
+  "result": {
+    "item": "precisionprospecting:ceramic/unfired_mineral_prospector_head_mold"
+  }
+}

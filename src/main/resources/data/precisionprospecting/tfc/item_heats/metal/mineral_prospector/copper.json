@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "item": "precisionprospecting:metal/mineral_prospector/copper"
+  },
+  "heat_capacity": 5.714,
+  "forging_temperature": 648,
+  "welding_temperature": 864
+}

@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "precisionprospecting:ceramic/unfired_prospector_hammer_head_mold",
-    "precisionprospecting:ceramic/unfired_prospector_drill_head_mold"
+    "precisionprospecting:ceramic/unfired_prospector_drill_head_mold",
+    "precisionprospecting:ceramic/unfired_mineral_prospector_head_mold"
   ]
 }

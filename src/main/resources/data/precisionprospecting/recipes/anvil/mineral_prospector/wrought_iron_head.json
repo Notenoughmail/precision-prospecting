@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "tag": "forge:double_ingots/wrought_iron"
+  },
+  "result": {
+    "item": "precisionprospecting:metal/mineral_prospector_head/wrought_iron"
+  },
+  "tier": 3,
+  "rules": [
+    "hit_last",
+    "draw_not_last"
+  ],
+  "apply_forging_bonus": true
+}

@@ -1,0 +1,14 @@
+{
+  "type": "tfc:casting",
+  "mold": {
+    "item": "precisionprospecting:ceramic/mineral_prospector_head_mold"
+  },
+  "fluid": {
+    "ingredient": "tfc:metal/bismuth_bronze",
+    "amount": 200
+  },
+  "result": {
+    "item": "precisionprospecting:metal/mineral_prospector_head/bismuth_bronze"
+  },
+  "break_chance": 1
+}
