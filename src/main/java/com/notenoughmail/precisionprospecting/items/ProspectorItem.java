@@ -8,6 +8,7 @@
  * This is an edited copy of tfc/common/items/PropickItem
  * RADIUS has been split into PRIMARY_RADIUS, SECONDARY_RADIUS, and DISPLACEMENT
  * The scanAreaFor method now takes six points provided by a switch statement in InteractionResult, as opposed to the center and radius
+ * In addition, it no longer directly scans for TFCTags.Blocks.PROSPECTABLE, but this.PROSPECT_TAG, defined at a later point
  */
 
 package com.notenoughmail.precisionprospecting.items;

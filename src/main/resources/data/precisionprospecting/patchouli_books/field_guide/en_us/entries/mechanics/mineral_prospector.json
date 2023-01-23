@@ -11,7 +11,7 @@
       "type": "patchouli:spotlight",
       "item": "precisionprospecting:metal/mineral_prospector/bismuth_bronze",
       "title": "Mineral Prospector",
-      "text": "The Mineral Prospector is a variation on the classic $(l:mechanics/prospecting)Prospector's Pick$(). Instead of reporting any nearby ores, it reports any $(t:Non-metal ores)minerals$() in the 45x45x45 area centered on the clicked block."
+      "text": "The Mineral Prospector is a variation on the classic $(l:mechanics/prospecting)Prospector's Pick$(). Instead of reporting any nearby ores, it only reports $(t:Non-metal ores)minerals$() in the 45x45x45 area centered on the clicked block."
     },
     {
       "type": "tfc:clay_knapping_recipe",

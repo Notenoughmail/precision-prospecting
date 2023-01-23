@@ -1,3 +1,9 @@
+/*
+ * Licensed under the EUPL, Version 1.2.
+ * You may obtain a copy of the License at:
+ * https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12
+ */
+
 package com.notenoughmail.precisionprospecting.items;
 
 import com.notenoughmail.precisionprospecting.Tags;
@@ -12,6 +18,6 @@ public class MineralProspectorItem extends ProspectorItem{
     // Curse you, Bonedoll, I gotta balance things again
     // 45's a nice number, let's go with that
     public MineralProspectorItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
-        super(tier, attackDamage, attackSpeed, properties, 30, 22, 22, 0, Tags.Blocks.PROSPECTABLE_MINERAL);
+        super(tier, attackDamage, attackSpeed, properties, 40, 22, 22, 0, Tags.Blocks.PROSPECTABLE_MINERAL);
     }
 }
