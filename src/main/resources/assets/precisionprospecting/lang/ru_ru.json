@@ -37,11 +37,33 @@
   "item.precisionprospecting.metal.prospector_drill_head.bronze": "Головка бура искателя из бронзы",
   "item.precisionprospecting.metal.prospector_drill_head.copper": "Головка бура искателя из меди",
 
+  "item.precisionprospecting.metal.mineral_prospector.red_steel": "Искатель минералов из красной стали",
+  "item.precisionprospecting.metal.mineral_prospector.blue_steel": "Искатель минералов из синей стали",
+  "item.precisionprospecting.metal.mineral_prospector.black_steel": "Искатель минералов из чёрной стали",
+  "item.precisionprospecting.metal.mineral_prospector.steel":  "Стальной искатель минералов",
+  "item.precisionprospecting.metal.mineral_prospector.wrought_iron":  "Искатель минералов из кованого железа",
+  "item.precisionprospecting.metal.mineral_prospector.black_bronze": "Искатель минералов из чёрной бронзы",
+  "item.precisionprospecting.metal.mineral_prospector.bismuth_bronze": "Искатель минералов из висмутовой бронзы",
+  "item.precisionprospecting.metal.mineral_prospector.bronze": "Бронзовый искатель минералов",
+  "item.precisionprospecting.metal.mineral_prospector.copper": "Медный искатель минералов",
+  "item.precisionprospecting.metal.mineral_prospector_head.red_steel": "Головка искателя минералов из красной стали",
+  "item.precisionprospecting.metal.mineral_prospector_head.blue_steel": "Головка искателя минералов из синей стали",
+  "item.precisionprospecting.metal.mineral_prospector_head.black_steel": "Головка искателя минералов из чёрной стали",
+  "item.precisionprospecting.metal.mineral_prospector_head.steel": "Головка искателя минералов из стали",
+  "item.precisionprospecting.metal.mineral_prospector_head.wrought_iron": "Головка искателя минералов из кованого железа",
+  "item.precisionprospecting.metal.mineral_prospector_head.black_bronze": "Головка искателя минералов из чёрной бронзы",
+  "item.precisionprospecting.metal.mineral_prospector_head.bismuth_bronze": "Головка искателя минералов из висмутовой бронзы",
+  "item.precisionprospecting.metal.mineral_prospector_head.bronze": "Головка искателя минералов из бронзы",
+  "item.precisionprospecting.metal.mineral_prospector_head.copper": "Головка искателя минералов из меди",
+
   "item.precisionprospecting.ceramic.unfired_prospector_hammer_head_mold": "Необожжённая форма головки молота искателя",
   "item.precisionprospecting.ceramic.prospector_hammer_head_mold": "Форма головки молота искателя",
 
   "item.precisionprospecting.ceramic.unfired_prospector_drill_head_mold": "Необожжённая форма головки бура искателя",
   "item.precisionprospecting.ceramic.prospector_drill_head_mold":  "Форма головки бура искателя",
+
+  "item.precisionprospecting.ceramic.unfired_mineral_prospector_head_mold": "Необожжённая форма головки искателя минералов",
+  "item.precisionprospecting.ceramic.mineral_prospector_head_mold": "Форма головки искателя минералов",
 
   "precisionprospecting.advancements.story.prospector_hammer.title": "Узкий поиск с молотом искателя",
   "precisionprospecting.advancements.story.prospector_hammer.description": "Сделай молот искателя",
