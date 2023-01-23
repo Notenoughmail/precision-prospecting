@@ -16,5 +16,6 @@ public class PrecisionProspectingKubeJSPlugin extends KubeJSPlugin {
         RegistryObjectBuilderTypes.ITEM.addType("prospector_hammer", ProsHammerItemBuilder.class, ProsHammerItemBuilder::new);
         RegistryObjectBuilderTypes.ITEM.addType("prospector_drill", ProsDrillItemBuilder.class, ProsDrillItemBuilder::new);
         RegistryObjectBuilderTypes.ITEM.addType("custom_prospector", CustomProsItemBuilder.class, CustomProsItemBuilder::new);
+        RegistryObjectBuilderTypes.ITEM.addType("mineral_prospector", MineralProspectorItemBuilder.class, MineralProspectorItemBuilder::new);
     }
 }
