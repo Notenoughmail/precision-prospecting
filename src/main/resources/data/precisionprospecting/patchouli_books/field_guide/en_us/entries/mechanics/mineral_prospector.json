@@ -15,7 +15,7 @@
     },
     {
       "type": "tfc:clay_knapping_recipe",
-      "recipe": "precision_prospecting:clay_knapping/mineral_prospector_head_mold",
+      "recipe": "precisionprospecting:clay_knapping/mineral_prospector_head_mold",
       "text": "A Mineral Prospector Head Mold can be $(l:getting_started/pottery)knapped$() from clay, as seen above."
     },
     {
