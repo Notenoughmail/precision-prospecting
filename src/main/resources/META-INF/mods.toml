@@ -54,3 +54,10 @@ issueTrackerURL="https://github.com/Notenoughmail/precision-prospecting/issues"
     versionRange = "[1802.5.4-build.521,)"
     ordering = "AFTER"
     side = "BOTH"
+
+[[dependencied.precisionprospecting]]
+    modId = "tfcchannelcasting"
+    mandatory = false
+    versionRange = "[0.1.2-beta,)"
+    ordering = "NONE"
+    side = "BOTH"
