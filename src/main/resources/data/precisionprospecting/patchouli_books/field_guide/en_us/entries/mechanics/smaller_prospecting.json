@@ -46,20 +46,20 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Note that it will be rare to see a Prospector's Hammer or Drill report finding a $(thing)Very Large Sample$(), due to their smaller ranges."
+      "text": "Keep in mind that it may be rare to see a Prospector's Hammer or Drill report finding a $(thing)Very Large Sample$(), due to their smaller range of inspection."
     }
   ],
   "read_by_default": true,
   "extra_recipe_mappings": {
-    "precisionprospecting:metal/prospector_hammer/bismuth_bronze":  2,
-    "precisionprospecting:metal/prospector_hammer/black_bronze": 2,
-    "precisionprospecting:metal/prospector_hammer/bronze": 2,
-    "precisionprospecting:metal/prospector_hammer/copper": 2,
-    "precisionprospecting:metal/prospector_hammer/wrought_iron": 2,
-    "precisionprospecting:metal/prospector_hammer/steel": 2,
-    "precisionprospecting:metal/prospector_hammer/black_steel": 2,
-    "precisionprospecting:metal/prospector_hammer/blue_steel": 2,
-    "precisionprospecting:metal/prospector_hammer/red_steel": 2,
+    "precisionprospecting:metal/prospector_hammer/bismuth_bronze": 1,
+    "precisionprospecting:metal/prospector_hammer/black_bronze": 1,
+    "precisionprospecting:metal/prospector_hammer/bronze": 1,
+    "precisionprospecting:metal/prospector_hammer/copper": 1,
+    "precisionprospecting:metal/prospector_hammer/wrought_iron": 1,
+    "precisionprospecting:metal/prospector_hammer/steel": 1,
+    "precisionprospecting:metal/prospector_hammer/black_steel": 1,
+    "precisionprospecting:metal/prospector_hammer/blue_steel": 1,
+    "precisionprospecting:metal/prospector_hammer/red_steel": 1,
     "precisionprospecting:metal/prospector_drill/bismuth_bronze": 4,
     "precisionprospecting:metal/prospector_drill/black_bronze": 4,
     "precisionprospecting:metal/prospector_drill/bronze": 4,

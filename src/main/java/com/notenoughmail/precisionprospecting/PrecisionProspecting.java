@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 @Mod(PrecisionProspecting.MODID)
 public class PrecisionProspecting {
 
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     public static final String MODID = "precisionprospecting";
     public static final String MOD_NAME = "Precision Prospecting";
 
