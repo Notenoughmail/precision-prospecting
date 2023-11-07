@@ -1,63 +1,41 @@
 modLoader="javafml"
-loaderVersion="[40,)"
-license="EUPL-1.2"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
 issueTrackerURL="https://github.com/Notenoughmail/precision-prospecting/issues"
 
-[[mods]] #mandatory
-    modId="precisionprospecting"
-    version="${file.jarVersion}"
-    displayName="Precision Prospecting"
+[[mods]]
+    modId="${mod_id}"
+    version="${mod_version}"
+    displayName="${mod_name}"
     displayURL="https://www.curseforge.com/minecraft/mc-mods/precision-prospecting"
     logoFile="precision_prospecting_icon.png"
-    authors="Not Enough Mail"
-    description='''The range of the Prospector's Pick has caused enough frustration'''
+    authors="${mod_authors}"
+    description='''${mod_description}'''
 
-# Dependencies
-[[dependencies.precisionprospecting]]
-    modId="jei"
-    mandatory=false
-    versionRange="[9.7.0,)"
-    ordering="NONE"
-    side="CLIENT"
-
-[[dependencies.precisionprospecting]]
+[[dependencies.${mod_id}]]
     modId = "tfc"
     mandatory = true
-    versionRange = "[2.1.14,)"
-    ordering = "AFTER"
-    side = "BOTH"
-
-[[dependencies.precisionprospecting]]
-    modId = "patchouli"
-    mandatory = true
-    versionRange = "[1.18.2-67,)"
+    versionRange = "${tfc_version_range}"
     ordering = "NONE"
     side = "BOTH"
 
-[[dependencies.precisionprospecting]]
+[[dependencies.${mod_id}]]
+    modId = "patchouli"
+    mandatory = true
+    versionRange = "${patchouli_version_range}"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.${mod_id}]]
     modId = "forge"
     mandatory = true
-    versionRange = "[40.1.73,)"
-    ordering = "AFTER"
+    versionRange = "${forge_version_range}"
+    ordering = "NONE"
     side = "BOTH"
 
-[[dependencies.precisionprospecting]]
+[[dependencies.${mod_id}]]
     modId = "minecraft"
     mandatory = true
-    versionRange = "[1.18.2,1.19)"
-    ordering = "AFTER"
-    side = "BOTH"
-
-[[dependencies.precisionprospecting]]
-    modId = "kubejs"
-    mandatory = false
-    versionRange = "[1802.5.4-build.521,)"
-    ordering = "AFTER"
-    side = "BOTH"
-
-[[dependencied.precisionprospecting]]
-    modId = "tfcchannelcasting"
-    mandatory = false
-    versionRange = "[0.1.2-beta,)"
+    versionRange = "${minecraft_version_range}"
     ordering = "NONE"
     side = "BOTH"

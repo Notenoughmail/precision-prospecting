@@ -73,15 +73,15 @@ public class Registration {
             )
     );
     public static final RegistryObject<Item>
-            UNFIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/unfired_prospector_hammer_head_mold", () -> new Item(ceramic_properties())),
-            FIRED_PROSHAMMER_MOLD = ITEMS.register("ceramic/prospector_hammer_head_mold", () -> new MoldItem(() -> moldProsHammerCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties())),
-            PROSHAMMER_TABLE_MOLD = ITEMS.register("mold/proshammer_head", () -> new Item(new Item.Properties())),
-            UNFIRED_PROSDRILL_MOLD = ITEMS.register("ceramic/unfired_prospector_drill_head_mold", () -> new Item(ceramic_properties())),
-            FIRED_PROSDRILL_MOLD = ITEMS.register("ceramic/prospector_drill_head_mold", () -> new MoldItem(() -> moldProsDrillCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties())),
-            PROSDRILL_TABLE_MOLD = ITEMS.register("mold/prosdrill_head", () -> new Item(new Item.Properties())),
-            UNFIRED_MINERAL_PROSPECTOR_MOLD = ITEMS.register("ceramic/unfired_mineral_prospector_head_mold", () -> new Item(ceramic_properties())),
-            FIRED_MINERAL_PROSPECTOR_MOLD = ITEMS.register("ceramic/mineral_prospector_head_mold", () -> new MoldItem(() -> moldMineralProspectorCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties())),
-            MINPROS_TABLE_MOLD = ITEMS.register("mold/minpros_head", () -> new Item(new Item.Properties()))
+            UNFIRED_PROSHAMMER_MOLD = register("ceramic/unfired_prospector_hammer_head_mold", () -> new Item(ceramic_properties())),
+            FIRED_PROSHAMMER_MOLD = register("ceramic/prospector_hammer_head_mold", () -> new MoldItem(() -> moldProsHammerCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties())),
+            PROSHAMMER_TABLE_MOLD = register("mold/proshammer_head", () -> new Item(new Item.Properties())),
+            UNFIRED_PROSDRILL_MOLD = register("ceramic/unfired_prospector_drill_head_mold", () -> new Item(ceramic_properties())),
+            FIRED_PROSDRILL_MOLD = register("ceramic/prospector_drill_head_mold", () -> new MoldItem(() -> moldProsDrillCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties())),
+            PROSDRILL_TABLE_MOLD = register("mold/prosdrill_head", () -> new Item(new Item.Properties())),
+            UNFIRED_MINERAL_PROSPECTOR_MOLD = register("ceramic/unfired_mineral_prospector_head_mold", () -> new Item(ceramic_properties())),
+            FIRED_MINERAL_PROSPECTOR_MOLD = register("ceramic/mineral_prospector_head_mold", () -> new MoldItem(() -> moldMineralProspectorCapacity.get(), TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, ceramic_properties())),
+            MINPROS_TABLE_MOLD = register("mold/minpros_head", () -> new Item(new Item.Properties()))
                     ;
     // Big thanks to Alc on Discord for telling me you can just pass in a lambda like this, which makes sense now that I think about it
 

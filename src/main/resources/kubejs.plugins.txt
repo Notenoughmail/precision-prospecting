@@ -1,1 +1,0 @@
-com.notenoughmail.precisionprospecting.integration.kubejs.PrecisionProspectingKubeJSPlugin
