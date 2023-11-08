@@ -10,12 +10,15 @@ import com.mojang.logging.LogUtils;
 import com.notenoughmail.precisionprospecting.config.PrecProsConfig;
 import com.notenoughmail.precisionprospecting.integration.vexxedvisuals.ModFilePackResources;
 import com.notenoughmail.precisionprospecting.items.Registration;
+import net.dries007.tfc.common.TFCCreativeTabs;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddPackFindersEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -39,6 +42,7 @@ public class PrecisionProspecting {
 
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         modbus.addListener(this::addPackFinders);
+        modbus.addListener(EventPriority.LOW, this::addItemsToCreativeTabs); // Hopefully ensure they're added after TFC's items
     }
 
     private void addPackFinders(AddPackFindersEvent event) {
@@ -49,9 +53,30 @@ public class PrecisionProspecting {
                 return;
             }
             IModFile modFile = modFileInfo.getFile();
-            event.addRepositorySource((consumer, constructor) -> {
-                consumer.accept(Pack.m_10430_(new ResourceLocation(PrecisionProspecting.MODID, "vexxed_items").toString(), false, () -> new ModFilePackResources("Vexxed Visuals: Precision Prospecting", modFile, "resourcepacks/vexxed_compat"), constructor, Pack.Position.TOP, PackSource.DEFAULT));
+            event.addRepositorySource(consumer -> {
+                Pack pack = Pack.readMetaAndCreate(new ResourceLocation(PrecisionProspecting.MODID, "vexxed_items").toString(), Component.literal("Vexxed Visuals: Precision Prospecting"), false, id -> new ModFilePackResources(id, modFile, "resourcepacks/vexxed_compat"), PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN);
+                if (pack != null) {
+                    consumer.accept(pack);
+                }
             });
+        }
+    }
+
+    private void addItemsToCreativeTabs(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTab() == TFCCreativeTabs.METAL.tab().get()) {
+            Registration.PROSHAMMERS.values().forEach(event::accept);
+            Registration.PROSHAMMER_HEADS.values().forEach(event::accept);
+            Registration.PROSDRILLS.values().forEach(event::accept);
+            Registration.PROSDRILL_HEADS.values().forEach(event::accept);
+            Registration.MINERAL_PROSPECTORS.values().forEach(event::accept);
+            Registration.MINERAL_PROSPECTOR_HEADS.values().forEach(event::accept);
+        } else if (event.getTab() == TFCCreativeTabs.MISC.tab().get()) {
+            event.accept(Registration.FIRED_PROSHAMMER_MOLD);
+            event.accept(Registration.UNFIRED_PROSHAMMER_MOLD);
+            event.accept(Registration.FIRED_PROSDRILL_MOLD);
+            event.accept(Registration.UNFIRED_PROSDRILL_MOLD);
+            event.accept(Registration.FIRED_MINERAL_PROSPECTOR_MOLD);
+            event.accept(Registration.UNFIRED_MINERAL_PROSPECTOR_MOLD);
         }
     }
 }

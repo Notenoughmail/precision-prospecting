@@ -121,6 +121,10 @@ dependencies {
     runtimeOnly(fg.deobf("curse.maven:jade-324717:${jade_version}"))
 
     // implementation fg.deobf("curse.maven:tfccasting-820815:${tfccasting_identifier}") // Currently not on 1.20
+
+    if (System.getProperty("idea.sync.active") != "true") {
+        annotationProcessor("org.spongepowered:mixin:${mixin_version}:processor")
+    }
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -130,7 +134,7 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
-            tfc_version_range: tfc_version_range
+            tfc_version_range: tfc_version_range, patchouli_version_range: patchouli_version_range
     ]
     inputs.properties replaceProperties
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
@@ -150,9 +154,9 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-
-    finalizedBy 'reobfJar'
 }
+
+jar.finalizedBy('reobfJar') // moved back out b/c it somehow prevented dependencies from loading in dev env
 
 publishing {
     publications {

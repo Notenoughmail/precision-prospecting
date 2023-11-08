@@ -5,6 +5,7 @@
  */
 
 /*
+ * TODO: Word this better
  * This is an edited copy of tfc/common/items/PropickItem
  * RADIUS has been split into PRIMARY_RADIUS, SECONDARY_RADIUS, and DISPLACEMENT
  * The scanAreaFor method now takes six points provided by a switch statement in InteractionResult, as opposed to the center and radius
@@ -47,13 +48,14 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class ProspectorItem extends ToolItem {
 
     public int COOLDOWN;
-    public int PRIMARY_RADIUS;
-    public int SECONDARY_RADIUS;
-    public int DISPLACEMENT;
+    public Supplier<Integer> PRIMARY_RADIUS;
+    public Supplier<Integer> SECONDARY_RADIUS;
+    public Supplier<Integer> DISPLACEMENT;
     public TagKey<Block> PROSPECT_TAG;
 
     private static final Random RANDOM = new Random();
@@ -71,7 +73,7 @@ public class ProspectorItem extends ToolItem {
 
     private final float falseNegativeChance;
 
-    public ProspectorItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, int cooldown, int primaryRadius, int secondaryRadius, int displacement, TagKey<Block> prospectTag) {
+    public ProspectorItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, int cooldown, Supplier<Integer> primaryRadius, Supplier<Integer> secondaryRadius, Supplier<Integer> displacement, TagKey<Block> prospectTag) {
         super(tier, attackDamage, attackSpeed, TFCTags.Blocks.MINEABLE_WITH_PROPICK, properties);
         this.COOLDOWN = cooldown;
         this.PRIMARY_RADIUS = primaryRadius;
@@ -89,41 +91,45 @@ public class ProspectorItem extends ToolItem {
         final Player player = context.getPlayer();
         final BlockPos pos = context.getClickedPos();
         final BlockState state = level.getBlockState(pos);
-        final Direction direction = context.getClickedFace();
+        final Direction direction = context.getClickedFace().getOpposite();
 
-        int pX1 = pos.getX() - PRIMARY_RADIUS;
-        int pX2 = pos.getX() + PRIMARY_RADIUS;
-        int pY1 = pos.getY() - PRIMARY_RADIUS;
-        int pY2 = pos.getY() + PRIMARY_RADIUS;
-        int pZ1 = pos.getZ() - PRIMARY_RADIUS;
-        int pZ2 = pos.getZ() + PRIMARY_RADIUS;
+        int pR = PRIMARY_RADIUS.get();
+        int sR = SECONDARY_RADIUS.get();
+        int di = DISPLACEMENT.get();
 
-        switch (direction.getOpposite()) {
+        int pX1 = pos.getX() - pR;
+        int pX2 = pos.getX() + pR;
+        int pY1 = pos.getY() - pR;
+        int pY2 = pos.getY() + pR;
+        int pZ1 = pos.getZ() - pR;
+        int pZ2 = pos.getZ() + pR;
+
+        switch (direction) {
             case UP -> {
-                pY1 = pos.getY() + DISPLACEMENT - SECONDARY_RADIUS;
-                pY2 = pos.getY() + DISPLACEMENT + SECONDARY_RADIUS;
+                pY1 = pos.getY() + di - sR;
+                pY2 = pos.getY() + di + sR;
             }
             case DOWN -> {
-                pY1 = pos.getY() - DISPLACEMENT - SECONDARY_RADIUS;
-                pY2 = pos.getY() - DISPLACEMENT + SECONDARY_RADIUS;
+                pY1 = pos.getY() - di - sR;
+                pY2 = pos.getY() - di + sR;
             }
             case NORTH -> {
-                pZ1 = pos.getZ() - DISPLACEMENT - SECONDARY_RADIUS;
-                pZ2 = pos.getZ() - DISPLACEMENT + SECONDARY_RADIUS;
+                pZ1 = pos.getZ() - di - sR;
+                pZ2 = pos.getZ() - di + sR;
             }
             case SOUTH -> {
-                pZ1 = pos.getZ() + DISPLACEMENT - SECONDARY_RADIUS;
-                pZ2 = pos.getZ() + DISPLACEMENT + SECONDARY_RADIUS;
+                pZ1 = pos.getZ() + di - sR;
+                pZ2 = pos.getZ() + di + sR;
             }
             case EAST -> {
-                pX1 = pos.getX() + DISPLACEMENT - SECONDARY_RADIUS;
-                pX2 = pos.getX() + DISPLACEMENT + SECONDARY_RADIUS;
+                pX1 = pos.getX() + di - sR;
+                pX2 = pos.getX() + di + sR;
             }
             case WEST -> {
-                pX1 = pos.getX() - DISPLACEMENT - SECONDARY_RADIUS;
-                pX2 = pos.getX() - DISPLACEMENT + SECONDARY_RADIUS;
+                pX1 = pos.getX() - di - sR;
+                pX2 = pos.getX() - di + sR;
             }
-            default -> throw new IllegalStateException("Unexpected value: " + direction.getOpposite());
+            default -> throw new IllegalStateException("Unexpected value: " + direction);
         }
 
         if (player instanceof ServerPlayer serverPlayer) {
@@ -141,7 +147,7 @@ public class ProspectorItem extends ToolItem {
             } else if (RANDOM.nextFloat() < falseNegativeChance) {
                 result = ProspectResult.NOTHING;
             } else {
-                Object2IntMap<BlockState> states = scanAreaFor(level, this.PROSPECT_TAG, pX1, pY1, pZ1, pX2, pY2, pZ2);
+                Object2IntMap<BlockState> states = scanAreaFor(level, PROSPECT_TAG, pX1, pY1, pZ1, pX2, pY2, pZ2);
                 if (states.isEmpty()) {
                     result = ProspectResult.NOTHING;
                 } else {
@@ -166,7 +172,7 @@ public class ProspectorItem extends ToolItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> text, TooltipFlag flag) {
         if (flag.isAdvanced()) {
-            text.add(Helpers.translatable("tfc.tooltip.propick.accuracy", (int) (100 * (1 - falseNegativeChance))).withStyle(ChatFormatting.GRAY));
+            text.add(Component.translatable("tfc.tooltip.propick.accuracy", (int) (100 * (1 - falseNegativeChance))).withStyle(ChatFormatting.GRAY));
         }
     }
 }
