@@ -14,8 +14,8 @@
       "text": "The Prospector's Hammer is a near copy of its pick-y brother, with the notable exception of a smaller range, only searching the 13x13x13 area centered on the block inspected. Very useful for finding veins that appear to be all around you."
     },
     {
-      "type": "tfc:clay_knapping_recipe",
-      "recipe": "precisionprospecting:clay_knapping/prospector_hammer_head_mold",
+      "type": "tfc:knapping_recipe",
+      "recipe": "precisionprospecting:knapping/prospector_hammer_head_mold",
       "text": "Much like with a Prospector's Pick, a Prospector's Hammer Head Mold can be made by $(l:getting_started/pottery)knapping$() some clay, as shown above, which can be heated and used to $(l:getting_started/finding_ores#casting)cast$() liquid metal."
     },
     {
@@ -30,8 +30,8 @@
       "text": "If you're unsure of which direction a vein is in, it may be time to pull out a $(thing)Prospector's Drill$(). It searches a 7x25x7 area, with the long side being in-line with the clicked block side, centered 10 blocks away."
     },
     {
-      "type": "tfc:clay_knapping_recipe",
-      "recipe": "precisionprospecting:clay_knapping/prospector_drill_head_mold",
+      "type": "tfc:knapping_recipe",
+      "recipe": "precisionprospecting:knapping/prospector_drill_head_mold",
       "text": "A Prospector's Drill Head Mold can be knapped from clay as seen above."
     },
     {

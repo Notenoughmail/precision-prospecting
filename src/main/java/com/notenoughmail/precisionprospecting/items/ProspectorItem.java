@@ -4,19 +4,12 @@
  * https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12
  */
 
-/*
- * TODO: Word this better
- * This is an edited copy of tfc/common/items/PropickItem
- * RADIUS has been split into PRIMARY_RADIUS, SECONDARY_RADIUS, and DISPLACEMENT
- * The scanAreaFor method now takes six points provided by a switch statement in InteractionResult, as opposed to the center and radius
- * In addition, it no longer directly scans for TFCTags.Blocks.PROSPECTABLE, but this.PROSPECT_TAG, defined at a later point
- */
-
 package com.notenoughmail.precisionprospecting.items;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.dries007.tfc.common.TFCTags;
+import net.dries007.tfc.common.items.PropickItem;
 import net.dries007.tfc.common.items.ProspectResult;
 import net.dries007.tfc.common.items.ToolItem;
 import net.dries007.tfc.network.PacketHandler;
@@ -50,6 +43,18 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
 
+/**
+ * This is an edited copy of {@link PropickItem PropickItem}. <br>
+ * The radius has been split into a primary and secondary radius and a displacement which are
+ * Integer Suppliers (not IntSuppliers). <br>
+ * {@link PropickItem#scanAreaFor(Level, BlockPos, int, TagKey) scanAreaFor()} has been modified
+ * to take 6 ints which are given to {@link BlockPos#betweenClosed(int, int, int, int, int, int) BlockPos#BetweenClosed()}
+ * instead of a BlockPos and int.<br>
+ * The ints are produced by a switch statement in {@link ProspectorItem#useOn(UseOnContext)}.
+ * Additionally, the TagKey given to the scan method is one provided to the item in its constructor,
+ * rather than only {@link TFCTags.Blocks#PROSPECTABLE}.
+ */
+
 public class ProspectorItem extends ToolItem {
 
     public int COOLDOWN;
@@ -60,12 +65,17 @@ public class ProspectorItem extends ToolItem {
 
     private static final Random RANDOM = new Random();
 
-    public static Object2IntMap<BlockState> scanAreaFor(Level level, TagKey<Block> tag, int pX1, int pY1, int pZ1, int pX2, int pY2, int pZ2) {
-        Object2IntMap<BlockState> results = new Object2IntOpenHashMap<>();
+    public static Object2IntMap<Block> scanAreaFor(Level level, TagKey<Block> tag, int pX1, int pY1, int pZ1, int pX2, int pY2, int pZ2) {
+        Object2IntMap<Block> results = new Object2IntOpenHashMap<>();
         for (BlockPos cursor : BlockPos.betweenClosed(pX1, pY1, pZ1, pX2, pY2, pZ2)) {
-            final BlockState state = level.getBlockState(cursor);
-            if (Helpers.isBlock(state, tag)) {
-                results.mergeInt(state, 1, Integer::sum);
+            Block block = level.getBlockState(cursor).getBlock();
+            // Coming soon™
+            // Block representative = PropickItem.getRepresentative(block);
+            // if (representative != null) {
+            //     block = representative;
+            // }
+            if (Helpers.isBlock(block, tag)) {
+                results.mergeInt(block, 1, Integer::sum);
             }
         }
         return results;
@@ -140,18 +150,18 @@ public class ProspectorItem extends ToolItem {
             player.getCooldowns().addCooldown(this, COOLDOWN);
 
             ProspectResult result;
-            BlockState found = state;
+            Block found = state.getBlock();
             RANDOM.setSeed(Helpers.hash(1564454769121215456L, pos));
             if (Helpers.isBlock(state, this.PROSPECT_TAG)) {
                 result = ProspectResult.FOUND;
             } else if (RANDOM.nextFloat() < falseNegativeChance) {
                 result = ProspectResult.NOTHING;
             } else {
-                Object2IntMap<BlockState> states = scanAreaFor(level, PROSPECT_TAG, pX1, pY1, pZ1, pX2, pY2, pZ2);
+                Object2IntMap<Block> states = scanAreaFor(level, PROSPECT_TAG, pX1, pY1, pZ1, pX2, pY2, pZ2);
                 if (states.isEmpty()) {
                     result = ProspectResult.NOTHING;
                 } else {
-                    final ArrayList<BlockState> stateKeys = new ArrayList<>(states.keySet());
+                    final ArrayList<Block> stateKeys = new ArrayList<>(states.keySet());
                     found = stateKeys.get(RANDOM.nextInt(stateKeys.size()));
                     final int amount = states.getOrDefault(found, 1);
 
@@ -163,8 +173,8 @@ public class ProspectorItem extends ToolItem {
                 }
             }
 
-            MinecraftForge.EVENT_BUS.post(new ProspectedEvent(player, result, found.getBlock()));
-            PacketHandler.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new ProspectedPacket(found.getBlock(), result));
+            MinecraftForge.EVENT_BUS.post(new ProspectedEvent(player, result, found));
+            PacketHandler.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new ProspectedPacket(found, result));
         }
         return InteractionResult.SUCCESS;
     }

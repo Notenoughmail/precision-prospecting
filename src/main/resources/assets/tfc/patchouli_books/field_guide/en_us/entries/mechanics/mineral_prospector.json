@@ -14,8 +14,8 @@
       "text": "The Mineral Prospector is a variation on the classic $(l:mechanics/prospecting)Prospector's Pick$(). However, instead of reporting any nearby ores, it only reports $(t:Non-metal ores)minerals$() in the 45x45x45 area centered on the clicked block."
     },
     {
-      "type": "tfc:clay_knapping_recipe",
-      "recipe": "precisionprospecting:clay_knapping/mineral_prospector_head_mold",
+      "type": "tfc:knapping_recipe",
+      "recipe": "precisionprospecting:knapping/mineral_prospector_head_mold",
       "text": "A Mineral Prospector Head Mold can be $(l:getting_started/pottery)knapped$() from clay, as seen above."
     },
     {
