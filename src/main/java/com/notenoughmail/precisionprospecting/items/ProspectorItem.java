@@ -68,12 +68,7 @@ public class ProspectorItem extends ToolItem {
     public static Object2IntMap<Block> scanAreaFor(Level level, TagKey<Block> tag, int pX1, int pY1, int pZ1, int pX2, int pY2, int pZ2) {
         Object2IntMap<Block> results = new Object2IntOpenHashMap<>();
         for (BlockPos cursor : BlockPos.betweenClosed(pX1, pY1, pZ1, pX2, pY2, pZ2)) {
-            Block block = level.getBlockState(cursor).getBlock();
-            // Coming soon™
-            // Block representative = PropickItem.getRepresentative(block);
-            // if (representative != null) {
-            //     block = representative;
-            // }
+            final Block block = PropickItem.getRepresentative(level.getBlockState(cursor).getBlock()); // ❤️
             if (Helpers.isBlock(block, tag)) {
                 results.mergeInt(block, 1, Integer::sum);
             }
