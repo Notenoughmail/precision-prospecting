@@ -8,7 +8,7 @@ package com.notenoughmail.precisionprospecting;
 
 import com.mojang.logging.LogUtils;
 import com.notenoughmail.precisionprospecting.config.PrecProsConfig;
-import com.notenoughmail.precisionprospecting.integration.vexxedvisuals.ModFilePackResources;
+import com.notenoughmail.precisionprospecting.integration.ModFilePackResources;
 import com.notenoughmail.precisionprospecting.items.Registration;
 import net.dries007.tfc.common.TFCCreativeTabs;
 import net.minecraft.network.chat.Component;
@@ -51,6 +51,10 @@ public class PrecisionProspecting {
         }
     }
 
+    public static ResourceLocation identifier(String path) {
+        return new ResourceLocation(MODID, path);
+    }
+
     private void addPackFinders(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             IModFileInfo modFileInfo = ModList.get().getModFileById(PrecisionProspecting.MODID);
@@ -60,11 +64,19 @@ public class PrecisionProspecting {
             }
             IModFile modFile = modFileInfo.getFile();
             event.addRepositorySource(consumer -> {
-                Pack pack = Pack.readMetaAndCreate(new ResourceLocation(PrecisionProspecting.MODID, "vexxed_items").toString(), Component.literal("Vexxed Visuals: Precision Prospecting"), false, id -> new ModFilePackResources(id, modFile, "resourcepacks/vexxed_compat"), PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN);
+                final Pack pack = Pack.readMetaAndCreate(identifier("vexxed_items").toString(), Component.literal("Vexxed Visuals: Precision Prospecting"), false, id -> new ModFilePackResources(id, modFile, "resourcepacks/vexxed_compat"), PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN);
                 if (pack != null) {
                     consumer.accept(pack);
                 }
             });
+            if (ModList.get().isLoaded("tfcchannelcasting")) {
+                event.addRepositorySource(consumer -> {
+                    final Pack pack = Pack.readMetaAndCreate(identifier("tfccc").toString(), Component.literal("PrecPros-TFCCC compat textures"), true, id -> new ModFilePackResources(id, modFile, "resourcepacks/tfccc", true), PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN);
+                    if (pack != null) {
+                        consumer.accept(pack);
+                    }
+                });
+            }
         }
     }
 

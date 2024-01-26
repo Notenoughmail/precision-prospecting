@@ -31,11 +31,6 @@ public class Registration {
     public static void init() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ITEMS.register(bus);
-        // This doesn't break anything even on a fresh instance without TFCCC, surprisingly, at least on Forge 40.2.0
-        // if (ModList.get().isLoaded(TFCChannelCasting.MOD_ID)) {
-        //     RegisterMoldItem.register();
-        // }
-
     }
 
     public static final Map<Metal.Default, RegistryObject<Item>> PROSHAMMERS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasTools, metal ->
@@ -67,13 +62,10 @@ public class Registration {
     );
     public static final RegistryObject<Item> UNFIRED_PROSHAMMER_MOLD = register("ceramic/unfired_prospector_hammer_head_mold", basicItem());
     public static final RegistryObject<Item> FIRED_PROSHAMMER_MOLD = register("ceramic/prospector_hammer_head_mold", () -> new MoldItem(moldProsHammerCapacity, TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, props()));
-    // public static final RegistryObject<Item> PROSHAMMER_TABLE_MOLD = register("mold/proshammer_head", baseItem());
     public static final RegistryObject<Item> UNFIRED_PROSDRILL_MOLD = register("ceramic/unfired_prospector_drill_head_mold", basicItem());
     public static final RegistryObject<Item> FIRED_PROSDRILL_MOLD = register("ceramic/prospector_drill_head_mold", () -> new MoldItem(moldProsDrillCapacity, TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, props()));
-    // public static final RegistryObject<Item> PROSDRILL_TABLE_MOLD = register("mold/prosdrill_head", baseItem());
     public static final RegistryObject<Item> UNFIRED_MINERAL_PROSPECTOR_MOLD = register("ceramic/unfired_mineral_prospector_head_mold", basicItem());
     public static final RegistryObject<Item> FIRED_MINERAL_PROSPECTOR_MOLD = register("ceramic/mineral_prospector_head_mold", () -> new MoldItem(moldMineralProspectorCapacity, TFCTags.Fluids.USABLE_IN_TOOL_HEAD_MOLD, props()));
-    // public static final RegistryObject<Item> MINPROS_TABLE_MOLD = register("mold/minpros_head", baseItem());
 
     private static Item.Properties props() {
         return new Item.Properties();

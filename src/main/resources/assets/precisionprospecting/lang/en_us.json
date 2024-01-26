@@ -72,11 +72,5 @@
   "precisionprospecting.advancements.story.prospector_drill.description": "Make a prospector's drill",
 
   "precisionprospecting.advancements.story.mineral_prospector.title": "But Not Metals!",
-  "precisionprospecting.advancements.story.mineral_prospector.description": "Make a mineral prospector",
-
-
-  "__comment__": "COMPATIBILITY",
-  "item.precisionprospecting.mold.proshammer_head": " PROSPECTOR_HAMMER Render Item",
-  "item.precisionprospecting.mold.prosdrill_head": "PROSPECTOR_DRILL Render Item",
-  "item.precisionprospecting.mold.minpros_head": "MINERAL_PROSPECTOR Render Item"
+  "precisionprospecting.advancements.story.mineral_prospector.description": "Make a mineral prospector"
 }

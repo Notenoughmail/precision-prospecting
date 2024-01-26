@@ -120,8 +120,6 @@ dependencies {
     compileOnly(fg.deobf("curse.maven:jade-324717:${jade_version}"))
     runtimeOnly(fg.deobf("curse.maven:jade-324717:${jade_version}"))
 
-    // implementation fg.deobf("curse.maven:tfccasting-820815:${tfccasting_identifier}") // Currently not on 1.20
-
     if (System.getProperty("idea.sync.active") != "true") {
         annotationProcessor("org.spongepowered:mixin:${mixin_version}:processor")
     }
