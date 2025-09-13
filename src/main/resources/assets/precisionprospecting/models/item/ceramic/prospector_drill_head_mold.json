@@ -1,6 +1,6 @@
 {
-  "loader": "tfc:contained_fluid",
-  "parent": "forge:item/default",
+  "loader": "tfc:fluid_container",
+  "parent": "neoforge:item/default",
   "textures": {
     "base": "precisionprospecting:item/ceramic/prospector_drill/head_mold_empty",
     "fluid": "precisionprospecting:item/ceramic/prospector_drill/head_mold_overlay"
