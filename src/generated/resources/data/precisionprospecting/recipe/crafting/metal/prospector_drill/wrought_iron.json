@@ -1,0 +1,26 @@
+{
+  "type": "tfc:advanced_shaped_crafting",
+  "key": {
+    "A": {
+      "tag": "c:rods/wooden"
+    },
+    "S": {
+      "item": "precisionprospecting:metal/prospector_drill_head/wrought_iron"
+    }
+  },
+  "pattern": [
+    "S",
+    "A"
+  ],
+  "result": {
+    "modifiers": [
+      {
+        "type": "tfc:copy_forging_bonus"
+      }
+    ],
+    "stack": {
+      "count": 1,
+      "id": "precisionprospecting:metal/prospector_drill/wrought_iron"
+    }
+  }
+}

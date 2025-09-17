@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "precisionprospecting:metal/prospector_hammer/copper",
-    "precisionprospecting:metal/prospector_drill/copper",
-    "precisionprospecting:metal/mineral_prospector/copper"
-  ]
-}

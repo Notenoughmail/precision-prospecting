@@ -3,15 +3,18 @@ package io.github.notenoughmail.precisionprospecting;
 import io.github.notenoughmail.precisionprospecting.items.PrecProsItems;
 import io.github.notenoughmail.precisionprospecting.items.ProspectorType;
 import net.dries007.tfc.common.TFCCreativeTabs;
+import net.dries007.tfc.common.capabilities.ItemCapabilities;
 import net.dries007.tfc.util.Metal;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 // TODO: 2.0.0 | Data/asset gen, config screen, molds have broken models, fix patchi stuff & move to own chapter, recipes & data?
@@ -28,6 +31,7 @@ public class PrecisionProspecting
         CONFIG = new PrecProsConfig(container);
         PrecProsItems.ITEMS.register(modBus);
         modBus.addListener(this::addItemToCreativeTabs);
+        modBus.addListener(this::registerCapabilities);
 
         if (dist.isClient()) {
             PrecProsClientEvents.init(modBus);
@@ -52,5 +56,13 @@ public class PrecisionProspecting
                 event.accept(PrecProsItems.UNFIRED_MOLDS.get(type));
             }
         }
+    }
+
+    private void registerCapabilities(RegisterCapabilitiesEvent event) {
+        final ItemLike[] molds = PrecProsItems.FIRED_MOLDS.values().toArray(ItemLike[]::new);
+
+        event.registerItem(ItemCapabilities.MOLD, ItemCapabilities::forMold, molds);
+        event.registerItem(ItemCapabilities.HEAT, ItemCapabilities::forMold, molds);
+        event.registerItem(ItemCapabilities.FLUID, ItemCapabilities::forMold, molds);
     }
 }

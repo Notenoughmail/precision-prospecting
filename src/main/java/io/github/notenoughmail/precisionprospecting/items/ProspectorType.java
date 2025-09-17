@@ -11,20 +11,22 @@ import java.util.function.IntSupplier;
 import static io.github.notenoughmail.precisionprospecting.PrecisionProspecting.CONFIG;
 
 public enum ProspectorType {
-    PROS_HAMMER((tier, props) -> new ProspectorItem(tier, props, CONFIG.prosHammerPrimaryRadius, CONFIG.prosHammerSecondaryRadius, CONFIG.prosHammerDisplacement, TFCTags.Blocks.PROSPECTABLE, 15), "prospector_hammer", CONFIG.prosHammerMoldCapacity),
-    PROS_DRILL((tier, props) -> new ProspectorItem(tier, props, CONFIG.prosDrillPrimaryRadius, CONFIG.prosDrillSecondaryRadius, CONFIG.prosDrillDisplacement, TFCTags.Blocks.PROSPECTABLE, 30), "prospector_drill", CONFIG.prosDrillMoldCapcaity),
-    MIN_PROS((tier, props) -> new ProspectorItem(tier, props, CONFIG.minProsPrimaryRadius, CONFIG.minProsSecondaryRadius, CONFIG.minProsDisplacement, PrecisionProspecting.PROSPECTABLE_MINERAL, 40), "mineral_prospector", CONFIG.minProsMoldCapacity);
+    PROS_HAMMER((tier, props) -> new ProspectorItem(tier, props, CONFIG.prosHammerPrimaryRadius, CONFIG.prosHammerSecondaryRadius, CONFIG.prosHammerDisplacement, TFCTags.Blocks.PROSPECTABLE, 15), "prospector_hammer", CONFIG.prosHammerMoldCapacity, 200),
+    PROS_DRILL((tier, props) -> new ProspectorItem(tier, props, CONFIG.prosDrillPrimaryRadius, CONFIG.prosDrillSecondaryRadius, CONFIG.prosDrillDisplacement, TFCTags.Blocks.PROSPECTABLE, 30), "prospector_drill", CONFIG.prosDrillMoldCapcaity, 400),
+    MIN_PROS((tier, props) -> new ProspectorItem(tier, props, CONFIG.minProsPrimaryRadius, CONFIG.minProsSecondaryRadius, CONFIG.minProsDisplacement, PrecisionProspecting.PROSPECTABLE_MINERAL, 40), "mineral_prospector", CONFIG.minProsMoldCapacity, 200);
 
     public static final ProspectorType[] VALUES = values();
 
     private final BiFunction<LevelTier, Item.Properties, Item> creator;
     private final String name;
     public final IntSupplier moldCapacity;
+    public final int defMelt;
 
-    ProspectorType(BiFunction<LevelTier, Item.Properties, Item> creator, String name, IntSupplier moldCapacity) {
+    ProspectorType(BiFunction<LevelTier, Item.Properties, Item> creator, String name, IntSupplier moldCapacity, int defMelt) {
         this.creator = creator;
         this.name = name;
         this.moldCapacity = moldCapacity;
+        this.defMelt = defMelt;
     }
 
     public Item create(LevelTier tier, Item.Properties properties) {

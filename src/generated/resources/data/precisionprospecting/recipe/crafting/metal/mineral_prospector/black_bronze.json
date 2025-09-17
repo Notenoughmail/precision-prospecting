@@ -1,0 +1,26 @@
+{
+  "type": "tfc:advanced_shaped_crafting",
+  "key": {
+    "A": {
+      "tag": "c:rods/wooden"
+    },
+    "S": {
+      "item": "precisionprospecting:metal/mineral_prospector_head/black_bronze"
+    }
+  },
+  "pattern": [
+    "S",
+    "A"
+  ],
+  "result": {
+    "modifiers": [
+      {
+        "type": "tfc:copy_forging_bonus"
+      }
+    ],
+    "stack": {
+      "count": 1,
+      "id": "precisionprospecting:metal/mineral_prospector/black_bronze"
+    }
+  }
+}

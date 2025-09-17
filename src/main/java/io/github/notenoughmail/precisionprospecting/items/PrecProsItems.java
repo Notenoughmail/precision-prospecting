@@ -20,10 +20,10 @@ public class PrecProsItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PrecisionProspecting.ID);
 
     public static final List<Metal> TOOL_METALS = List.of(
+            Metal.COPPER,
             Metal.BISMUTH_BRONZE,
             Metal.BLACK_BRONZE,
             Metal.BRONZE,
-            Metal.COPPER,
             Metal.WROUGHT_IRON,
             Metal.STEEL,
             Metal.BLACK_STEEL,
