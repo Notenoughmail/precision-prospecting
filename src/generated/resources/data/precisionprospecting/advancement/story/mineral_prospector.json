@@ -1,0 +1,33 @@
+{
+  "parent": "tfc:story/propick",
+  "criteria": {
+    "mineral_prospector": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#precisionprospecting:tools/mineral_prospector"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "precisionprospecting.advancements.story.mineral_prospector.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "precisionprospecting:metal/mineral_prospector/copper"
+    },
+    "title": {
+      "translate": "precisionprospecting.advancements.story.mineral_prospector.title"
+    }
+  },
+  "requirements": [
+    [
+      "mineral_prospector"
+    ]
+  ]
+}

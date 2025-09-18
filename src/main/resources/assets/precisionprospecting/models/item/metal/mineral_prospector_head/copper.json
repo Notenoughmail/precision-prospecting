@@ -1,6 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "precisionprospecting:item/metal/mineral_prospector_head/copper"
-  }
-}

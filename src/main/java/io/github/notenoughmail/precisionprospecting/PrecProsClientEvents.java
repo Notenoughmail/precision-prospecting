@@ -8,10 +8,10 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 public class PrecProsClientEvents {
 
     public static void init(IEventBus modBus) {
-        modBus.addListener(PrecProsClientEvents::registerItemColorhandlers);
+        modBus.addListener(PrecProsClientEvents::registerItemColorHandlers);
     }
 
-    private static void registerItemColorhandlers(RegisterColorHandlersEvent.Item event) {
+    private static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
         PrecProsItems.FIRED_MOLDS.values().forEach(item -> event.register(ContainedFluidModel.COLOR, item));
     }
 }

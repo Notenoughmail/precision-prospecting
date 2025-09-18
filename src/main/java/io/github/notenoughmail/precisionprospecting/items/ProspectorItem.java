@@ -36,6 +36,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.IntSupplier;
 
+/**
+ * A modified copy of {@link PropickItem} which has a custom scan area and prospectable tag
+ */
 public class ProspectorItem extends ToolItem {
 
     public static Object2IntMap<Block> scanAreaFor(Level level, TagKey<Block> tag, int pX1, int pY1, int pZ1, int pX2, int pY2, int pZ2) {
