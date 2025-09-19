@@ -1,47 +1,58 @@
 package io.github.notenoughmail.precisionprospecting;
 
-import com.mojang.serialization.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import net.dries007.tfc.util.Helpers;
+import net.minecraft.Util;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import vazkii.patchouli.api.PatchouliAPI;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-// TODO: Implement this
 public class PatchouliProvider implements Provider, DataProvider {
+
+    protected static JsonObject json(Consumer<JsonObject> builder) {
+        return Util.make(new JsonObject(), builder);
+    }
+
+    protected static void ifNotNull(@Nullable String val, String key, JsonObject obj) {
+        if (val != null) {
+            obj.addProperty(key, val);
+        }
+    }
     
     protected PackOutput.PathProvider out;
     protected CompletableFuture<HolderLookup.Provider> lookupProvider;
     protected ExistingFileHelper efh;
 
-    final List<EncodablePage<?>> entries = new ArrayList<>();
+    final List<EncodableContent> entries = new ArrayList<>();
     
     @Override
     public void add(Consumer<? super DataProvider> ret, PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper efh) {
-        out = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, PatchouliAPI.MOD_ID);
+        out = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "patchouli_books/field_guide/en_us");
         this.lookupProvider = lookupProvider;
         this.efh = efh;
         ret.accept(this);
-    }
-    
-    void addPages(HolderLookup.Provider provider) {
-        
     }
 
     @Override
     public CompletableFuture<?> run(CachedOutput output) {
         return lookupProvider.thenCompose(provider -> {
-            addPages(provider);
+            PatchiData.generate(entries::add);
             return CompletableFuture.allOf(
                     entries.stream()
-                            .map(e -> e.encode(output, provider, out))
+                            .map(e -> DataProvider.saveStable(output, e.encode(), out.json(e.id())))
                             .toArray(CompletableFuture[]::new)
             );
         });
@@ -52,17 +63,251 @@ public class PatchouliProvider implements Provider, DataProvider {
         return "PatchouliPageProvider";
     }
     
-    interface EncodablePage<T extends EncodablePage<T>> {
-        Codec<T> codec(HolderLookup.Provider provider);
+    interface EncodableContent {
 
         ResourceLocation id();
 
-        default T thiz() {
-            return (T) this;
+        JsonElement encode();
+    }
+
+    public static class Category implements EncodableContent {
+
+        final String file, name, description;
+        final ResourceLocation categoryId;
+        public String icon, parent, flag;
+        public int sortNum;
+        public boolean secret;
+
+        public Category(String file, String name, String description, Consumer<Category> builder) {
+            this.file = file;
+            this.name = name;
+            this.description = description;
+            categoryId = Helpers.identifier(file);
+            builder.accept(this);
         }
 
-        default CompletableFuture<?> encode(CachedOutput output, HolderLookup.Provider provider, PackOutput.PathProvider out) {
-            return DataProvider.saveStable(output, provider, codec(provider), thiz(), out.json(id()));
+        public Category icon(ItemLike item) {
+            icon = BuiltInRegistries.ITEM.getKey(item.asItem()).toString();
+            return this;
+        }
+
+        @Override
+        public ResourceLocation id() {
+            return Helpers.identifier("categories/" + file);
+        }
+
+        @Override
+        public JsonElement encode() {
+            Objects.requireNonNull(icon);
+            return json(j -> {
+                ifNotNull(name, "name", j);
+                ifNotNull(description, "description", j);
+                ifNotNull(icon, "icon", j);
+                ifNotNull(parent, "parent", j);
+                ifNotNull(flag, "flag", j);
+                if (sortNum != 0) {
+                    j.addProperty("sortnum", sortNum);
+                }
+                if (secret) {
+                    j.addProperty("secret", true);
+                }
+            });
+        }
+    }
+
+    public static class Entry implements EncodableContent {
+
+        final Category category;
+        final String name, file;
+        final Map<String, Integer> recipeMappings = new HashMap<>();
+        final List<Page> pages = new ArrayList<>();
+        public String icon;
+        public boolean readByDefault, priority, secret;
+        public int sortNum;
+
+        public Entry(String file, String name, Category category, Consumer<Entry> builder) {
+            this.file = file;
+            this.name = name;
+            this.category = category;
+            builder.accept(this);
+        }
+
+        public Entry icon(ItemLike item) {
+            icon = BuiltInRegistries.ITEM.getKey(item.asItem()).toString();
+            return this;
+        }
+
+        public Entry pages(Page... pages) {
+            this.pages.addAll(List.of(pages));
+            return this;
+        }
+
+        public Entry recipeMapping(ResourceLocation id, int page) {
+            recipeMappings.put(id.toString(), page);
+            return this;
+        }
+
+        @Override
+        public ResourceLocation id() {
+            return category.categoryId.withPrefix("entries/").withSuffix("/" + file);
+        }
+
+        public String linkLocation() {
+            return category.file + "/" + file;
+        }
+
+        @Override
+        public JsonElement encode() {
+            return json(j -> {
+                ifNotNull(category.categoryId.toString(), "category", j);
+                ifNotNull(icon, "icon", j);
+                ifNotNull(name, "name", j);
+                if (priority) j.addProperty("priority", true);
+                if (secret) j.addProperty("secret", true);
+                if (readByDefault) j.addProperty("read_by_default", true);
+                if (sortNum != 0) j.addProperty("sortnum", sortNum);
+                final JsonArray arr = new JsonArray(pages.size());
+                pages.forEach(s -> arr.add(s.build()));
+                j.add("pages", arr);
+            });
+        }
+    }
+
+    public static abstract class Page {
+
+        String anchor;
+
+        abstract String type();
+
+        abstract void populate(JsonObject obj);
+
+        public Page anchor(String anchor) {
+            this.anchor = anchor;
+            return this;
+        }
+
+        JsonObject build() {
+            return json(j -> {
+                j.addProperty("type", type());
+                ifNotNull(anchor, "anchor", j);
+                populate(j);
+            });
+        }
+    }
+
+    public static class TextPage extends Page {
+
+        final StringBuilder builder = new StringBuilder();
+        String title;
+
+        @Override
+        public String type() {
+            return "patchouli:text";
+        }
+
+        public TextPage title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public TextPage text(String text) {
+            builder.append(text);
+            return this;
+        }
+
+        public TextPage br() {
+            return text("$(br)");
+        }
+
+        public TextPage li() {
+            return text("$(li)");
+        }
+
+        public TextPage thing(String thing) {
+            builder.append("$(thing)");
+            builder.append(thing);
+            return text("$()");
+        }
+
+        public TextPage link(String entry, @Nullable String anchor, String text) {
+            builder.append("$(l:");
+            builder.append(entry);
+            if (anchor != null) {
+                builder.append('#');
+                builder.append(anchor);
+            }
+            builder.append(')');
+            builder.append(text);
+            return text("$()");
+        }
+
+        public TextPage link(Entry entry, @Nullable String anchor, String text) {
+            return link(entry.linkLocation(), anchor, text);
+        }
+
+        @Override
+        public void populate(JsonObject obj) {
+            obj.addProperty("text", builder.toString());
+            ifNotNull(title, "title", obj);
+        }
+    }
+
+    public static class SpotlightPage extends TextPage {
+
+        final boolean linkRecipes;
+        final Item item;
+
+        public SpotlightPage(boolean linkRecipes, Item item) {
+            this.linkRecipes = linkRecipes;
+            this.item = item;
+        }
+
+        @Override
+        public String type() {
+            return "patchouli:spotlight";
+        }
+
+        @Override
+        public void populate(JsonObject obj) {
+            super.populate(obj);
+            obj.addProperty("link_recipe", linkRecipes);
+            obj.addProperty("item", BuiltInRegistries.ITEM.getKey(item).toString());
+        }
+    }
+
+    public static class RecipePage extends TextPage {
+
+        final String recipe;
+        String type;
+
+        public RecipePage(String recipe) {
+            this.recipe = recipe;
+        }
+
+        public RecipePage knap() {
+            type = "tfc:knapping_recipe";
+            return this;
+        }
+
+        public RecipePage heat() {
+            type = "tfc:heat_recipe";
+            return this;
+        }
+
+        public RecipePage anvil() {
+            type = "tfc:anvil_recipe";
+            return this;
+        }
+
+        @Override
+        public String type() {
+            return type;
+        }
+
+        @Override
+        public void populate(JsonObject obj) {
+            super.populate(obj);
+            obj.addProperty("recipe", recipe);
         }
     }
 }

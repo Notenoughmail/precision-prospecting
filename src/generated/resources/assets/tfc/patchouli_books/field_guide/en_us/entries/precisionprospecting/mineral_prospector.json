@@ -1,0 +1,13 @@
+{
+  "category": "tfc:precisionprospecting",
+  "icon": "precisionprospecting:metal/mineral_prospector/steel",
+  "name": "Mineral Prospector",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Woah!"
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 3
+}

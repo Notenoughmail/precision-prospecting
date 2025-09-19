@@ -1,0 +1,13 @@
+{
+  "category": "tfc:precisionprospecting",
+  "icon": "precisionprospecting:metal/prospector_drill/steel",
+  "name": "Prospector's Drill",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Woah!"
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 2
+}

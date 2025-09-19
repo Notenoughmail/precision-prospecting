@@ -1,0 +1,16 @@
+{
+  "category": "tfc:precisionprospecting",
+  "icon": "precisionprospecting:metal/mineral_prospector_head/blue_steel",
+  "name": "Introduction",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Precision Prospecting adds three additional kinds of prospecting tools with different ranges which can be used to enhance your prospecting expeditions."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)The $(l:precisionprospecting/prospector_hammer)Prospector's Hammer$() is similar to a regular $(l:mechanics/prospecting#propick)Prospector's Pick$() just with a smaller range.$(li)The $(l:precisionprospecting/prospector_drill)Prospector's Drill$() is a directional prospector which has a non-cuboid, off-center scanning area$(li)The $(l:precisionprospecting/mineral_prospector)Mineral Prospector$() has a larger scanning area, but only detects $(thing)non-metal ores$()."
+    }
+  ],
+  "read_by_default": true
+}
