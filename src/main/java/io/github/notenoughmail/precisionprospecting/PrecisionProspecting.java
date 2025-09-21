@@ -10,14 +10,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
-// TODO: 2.0.0 | Data/asset gen, config screen, molds have broken models, fix patchi stuff & move to own chapter, recipes & data?
+// TODO: 2.0.1 | When TFC releases 4.0.4-beta, add mold table support
 @Mod(PrecisionProspecting.ID)
 public class PrecisionProspecting
 {
@@ -27,15 +26,11 @@ public class PrecisionProspecting
 
     public static final TagKey<Block> PROSPECTABLE_MINERAL = TagKey.create(Registries.BLOCK, id("prospectable_mineral"));
 
-    public PrecisionProspecting(IEventBus modBus, Dist dist, ModContainer container) {
+    public PrecisionProspecting(IEventBus modBus, ModContainer container) {
         CONFIG = new PrecProsConfig(container);
         PrecProsItems.ITEMS.register(modBus);
         modBus.addListener(this::addItemToCreativeTabs);
         modBus.addListener(this::registerCapabilities);
-
-        if (dist.isClient()) {
-            PrecProsClientEvents.init(modBus);
-        }
     }
 
     public static ResourceLocation id(String path) {

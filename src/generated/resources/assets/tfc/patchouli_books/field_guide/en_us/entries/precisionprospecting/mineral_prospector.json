@@ -1,11 +1,35 @@
 {
   "category": "tfc:precisionprospecting",
+  "extra_recipe_mappings": {
+    "precisionprospecting:metal/mineral_prospector/bismuth_bronze": 1,
+    "precisionprospecting:metal/mineral_prospector/black_bronze": 1,
+    "precisionprospecting:metal/mineral_prospector/black_steel": 1,
+    "precisionprospecting:metal/mineral_prospector/blue_steel": 1,
+    "precisionprospecting:metal/mineral_prospector/bronze": 1,
+    "precisionprospecting:metal/mineral_prospector/copper": 1,
+    "precisionprospecting:metal/mineral_prospector/red_steel": 1,
+    "precisionprospecting:metal/mineral_prospector/steel": 1,
+    "precisionprospecting:metal/mineral_prospector/wrought_iron": 1
+  },
   "icon": "precisionprospecting:metal/mineral_prospector/steel",
   "name": "Mineral Prospector",
   "pages": [
     {
-      "type": "patchouli:text",
-      "text": "Woah!"
+      "type": "patchouli:spotlight",
+      "item": "precisionprospecting:metal/mineral_prospector/black_bronze",
+      "link_recipe": false,
+      "text": "The $(thing)Mineral Prospector$() scans a large range, a massive 45x45x45 centered on the clicked block, but only for non-metal ores.",
+      "title": "Mineral Prospector"
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "precisionprospecting:knapping/mineral_prospector_head_mold",
+      "text": "A mold for the tool head can be $(l:getting_started/pottery)knapped$() from clay, as seen above, which can be used to $(l:getting_started/finding_ores#casting)cast$() low tier metals."
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "precisionprospecting:anvil/metal/mineral_prospector/black_steel",
+      "text": "A $(thing)Mineral Prospector Head$() can also be $(l:mechanics/anvils#working)smithed$() out of a $(thing)double ingot$() of any tool metal. Craft the head with a stick to make a Mineral Prospector."
     }
   ],
   "read_by_default": true,

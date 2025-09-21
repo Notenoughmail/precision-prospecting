@@ -69,21 +69,24 @@ public class TagProvider implements Provider {
                 }
                 tag(MIN_PROS)
                         .add(
-                                PrecProsItems.TOOLS.values().stream()
+                                PrecProsItems.TOOL_METALS.stream()
+                                        .map(PrecProsItems.TOOLS::get)
                                         .map(m -> m.get(ProspectorType.MIN_PROS))
                                         .map(DeferredHolder::getKey)
                                         .toArray(ResourceKey[]::new)
                         );
                 tag(PROS_HAMMER)
                         .add(
-                                PrecProsItems.TOOLS.values().stream()
+                                PrecProsItems.TOOL_METALS.stream()
+                                        .map(PrecProsItems.TOOLS::get)
                                         .map(m -> m.get(ProspectorType.PROS_HAMMER))
                                         .map(DeferredHolder::getKey)
                                         .toArray(ResourceKey[]::new)
                         );
                 tag(PROS_DRILL)
                         .add(
-                                PrecProsItems.TOOLS.values().stream()
+                                PrecProsItems.TOOL_METALS.stream()
+                                        .map(PrecProsItems.TOOLS::get)
                                         .map(m -> m.get(ProspectorType.PROS_DRILL))
                                         .map(DeferredHolder::getKey)
                                         .toArray(ResourceKey[]::new)

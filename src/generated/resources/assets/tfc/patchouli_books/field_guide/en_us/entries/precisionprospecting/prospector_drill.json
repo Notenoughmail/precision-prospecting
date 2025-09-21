@@ -1,11 +1,40 @@
 {
   "category": "tfc:precisionprospecting",
+  "extra_recipe_mappings": {
+    "precisionprospecting:metal/prospector_drill/bismuth_bronze": 1,
+    "precisionprospecting:metal/prospector_drill/black_bronze": 1,
+    "precisionprospecting:metal/prospector_drill/black_steel": 1,
+    "precisionprospecting:metal/prospector_drill/blue_steel": 1,
+    "precisionprospecting:metal/prospector_drill/bronze": 1,
+    "precisionprospecting:metal/prospector_drill/copper": 1,
+    "precisionprospecting:metal/prospector_drill/red_steel": 1,
+    "precisionprospecting:metal/prospector_drill/steel": 1,
+    "precisionprospecting:metal/prospector_drill/wrought_iron": 1
+  },
   "icon": "precisionprospecting:metal/prospector_drill/steel",
   "name": "Prospector's Drill",
   "pages": [
     {
-      "type": "patchouli:text",
-      "text": "Woah!"
+      "type": "patchouli:spotlight",
+      "item": "precisionprospecting:metal/prospector_drill/bismuth_bronze",
+      "link_recipe": false,
+      "text": "The $(thing)Prospector's Drill$() is unique from other prospecting tools in that its scanning area is not a cube and not centered on the clicked block.$(br)The scan area is a 7x25x7 box where the square faces are parallel to the clicked face. Additionally, the scan area is shifted away from the clicked face by 10 blocks.",
+      "title": "Prospector's Drill"
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "precisionprospecting:knapping/prospector_drill_head_mold",
+      "text": "A mold for the tool head can be $(l:getting_started/pottery)knapped$() from clay, as seen above, which can be used to $(l:getting_started/finding_ores#casting)cast$() low tier metals."
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "precisionprospecting:anvil/metal/prospector_drill/blue_steel",
+      "text": "A $(thing)Prospector's Drill Head$() can also be $(l:mechanics/anvils#working)smithed$() out of a $(thing)tuyere$() of any tool metal."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "precisionprospecting:crafting/metal/prospector_drill/bismuth_bronze",
+      "text": "The head can then be crafted with two sticks to make a Prospector's Drill"
     }
   ],
   "read_by_default": true,

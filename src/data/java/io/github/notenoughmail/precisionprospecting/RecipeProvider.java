@@ -105,14 +105,17 @@ public class RecipeProvider implements Provider {
                                 false
                         ), "heating/metal/" + metal.getSerializedName() + "/" + type + "_head");
 
+                        final String[] pattern = type == ProspectorType.PROS_DRILL ?
+                                new String[]{ "S ", "A ", " A" } :
+                                new String[]{ "S", "A" };
+
                         accept(out, new AdvancedShapedRecipe(
                                 ShapedRecipePattern.of(
                                         Map.of(
                                                 'S', Ingredient.of(PrecProsItems.TOOL_HEADS.get(metal).get(type)),
                                                 'A', Ingredient.of(Tags.Items.RODS_WOODEN)
                                         ),
-                                        "S",
-                                        "A"
+                                        pattern
                                 ),
                                 true,
                                 ItemStackProvider.of(PrecProsItems.TOOLS.get(metal).get(type).toStack(), CopyForgingBonusModifier.INSTANCE),

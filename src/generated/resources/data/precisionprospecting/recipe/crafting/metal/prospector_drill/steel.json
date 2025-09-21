@@ -9,8 +9,9 @@
     }
   },
   "pattern": [
-    "S",
-    "A"
+    "S ",
+    "A ",
+    " A"
   ],
   "result": {
     "modifiers": [

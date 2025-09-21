@@ -119,7 +119,7 @@ public class PatchouliProvider implements Provider, DataProvider {
 
         final Category category;
         final String name, file;
-        final Map<String, Integer> recipeMappings = new HashMap<>();
+        final Map<ItemLike, Integer> recipeMappings = new HashMap<>();
         final List<Page> pages = new ArrayList<>();
         public String icon;
         public boolean readByDefault, priority, secret;
@@ -137,13 +137,25 @@ public class PatchouliProvider implements Provider, DataProvider {
             return this;
         }
 
-        public Entry pages(Page... pages) {
-            this.pages.addAll(List.of(pages));
-            return this;
+        private <T extends Page> T add(T t) {
+            pages.add(t);
+            return t;
         }
 
-        public Entry recipeMapping(ResourceLocation id, int page) {
-            recipeMappings.put(id.toString(), page);
+        public TextPage textPage() {
+            return add(new TextPage(this));
+        }
+
+        public SpotlightPage spotlight(boolean linkRecipes, ItemLike item) {
+            return add(new SpotlightPage(linkRecipes, item.asItem(), this));
+        }
+
+        public RecipePage recipe(String recipe) {
+            return add(new RecipePage(recipe, this));
+        }
+
+        public Entry recipeMapping(ItemLike item, int page) {
+            recipeMappings.put(item, page);
             return this;
         }
 
@@ -169,6 +181,9 @@ public class PatchouliProvider implements Provider, DataProvider {
                 final JsonArray arr = new JsonArray(pages.size());
                 pages.forEach(s -> arr.add(s.build()));
                 j.add("pages", arr);
+                if (!recipeMappings.isEmpty()) {
+                    j.add("extra_recipe_mappings", json(obj -> recipeMappings.forEach((i, n) -> obj.addProperty(BuiltInRegistries.ITEM.getKey(i.asItem()).toString(), n))));
+                }
             });
         }
     }
@@ -176,6 +191,27 @@ public class PatchouliProvider implements Provider, DataProvider {
     public static abstract class Page {
 
         String anchor;
+        private final Entry entry;
+
+        protected Page(Entry entry) {
+            this.entry = entry;
+        }
+
+        public TextPage textPage() {
+            return entry.textPage();
+        }
+
+        public SpotlightPage spotlight(boolean linkRecipes, ItemLike item) {
+            return entry.spotlight(linkRecipes, item);
+        }
+
+        public RecipePage recipe(String recipe) {
+            return entry.recipe(recipe);
+        }
+
+        public Entry exit() {
+            return entry;
+        }
 
         abstract String type();
 
@@ -199,6 +235,10 @@ public class PatchouliProvider implements Provider, DataProvider {
 
         final StringBuilder builder = new StringBuilder();
         String title;
+
+        public TextPage(Entry entry) {
+            super(entry);
+        }
 
         @Override
         public String type() {
@@ -257,7 +297,8 @@ public class PatchouliProvider implements Provider, DataProvider {
         final boolean linkRecipes;
         final Item item;
 
-        public SpotlightPage(boolean linkRecipes, Item item) {
+        public SpotlightPage(boolean linkRecipes, Item item, Entry entry) {
+            super(entry);
             this.linkRecipes = linkRecipes;
             this.item = item;
         }
@@ -280,7 +321,8 @@ public class PatchouliProvider implements Provider, DataProvider {
         final String recipe;
         String type;
 
-        public RecipePage(String recipe) {
+        public RecipePage(String recipe, Entry entry) {
+            super(entry);
             this.recipe = recipe;
         }
 
@@ -289,8 +331,8 @@ public class PatchouliProvider implements Provider, DataProvider {
             return this;
         }
 
-        public RecipePage heat() {
-            type = "tfc:heat_recipe";
+        public RecipePage craft() {
+            type = "patchouli:crafting";
             return this;
         }
 
