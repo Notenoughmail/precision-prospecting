@@ -1,5 +1,7 @@
 package io.github.notenoughmail.precisionprospecting;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import io.github.notenoughmail.precisionprospecting.items.PrecProsItems;
 import io.github.notenoughmail.precisionprospecting.items.ProspectorType;
 import net.dries007.tfc.util.Helpers;
@@ -10,10 +12,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.client.model.generators.CustomLoaderBuilder;
-import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
 
@@ -60,5 +59,99 @@ public class ModelProvider implements Provider {
                 return generatedModels.computeIfAbsent(id, factory);
             }
         });
+        ret.accept(new BlockModelProvider(output, PrecisionProspecting.ID, efh) {
+            @Override
+            protected void registerModels() {
+                mold(PrecProsItems.FIRED_MOLDS.get(ProspectorType.PROS_HAMMER))
+                        .fullRow()
+                        .fullRow()
+                        .row("XXXXXXX     XX")
+                        .row("XXXXXX      XX")
+                        .row("XXXXX       XX")
+                        .row("XXXX        XX")
+                        .row("XXX         XX")
+                        .row("XX         XXX")
+                        .row("XX        XXXX")
+                        .row("XX       XXXXX")
+                        .row("XX      XXXXXX")
+                        .row("XX     XXXXXXX")
+                        .fullRow()
+                        .fullRow();
+                mold(PrecProsItems.FIRED_MOLDS.get(ProspectorType.PROS_DRILL))
+                        .fullRow()
+                        .fullRow()
+                        .fullRow()
+                        .row("XX   XXXXXXXXX")
+                        .row("X      XXXXXXX")
+                        .row("XX       XXXXX")
+                        .row("XXXX       XXX")
+                        .row("XXXXXX       X")
+                        .row("XXXXXXXX     X")
+                        .row("XXXXXXXXX    X")
+                        .fullRow()
+                        .fullRow()
+                        .fullRow()
+                        .fullRow();
+                mold(PrecProsItems.FIRED_MOLDS.get(ProspectorType.MIN_PROS))
+                        .fullRow()
+                        .fullRow()
+                        .fullRow()
+                        .row("XXXXXXXX  XXXX")
+                        .row("XXXXXX      XX")
+                        .row("XXXX         X")
+                        .row("XXX        XXX")
+                        .row("XX       XXXXX")
+                        .row("X       XXXXXX")
+                        .row("XX     XXXXXXX")
+                        .row("XXX   XXXXXXXX")
+                        .row("XXXX XXXXXXXXX")
+                        .fullRow()
+                        .fullRow();
+            }
+
+            MoldLoaderBuilder mold(ItemLike item) {
+                return getBuilder(BuiltInRegistries.ITEM.getKey(item.asItem()).withPrefix("mold/").toString())
+                        .texture("0", "tfc:block/mold")
+                        .texture("particle", "tfc:block/mold")
+                        .customLoader(MoldLoaderBuilder::new);
+            }
+
+            @Override
+            public BlockModelBuilder getBuilder(String path) {
+                final ResourceLocation id = ResourceLocation.tryParse(path).withPrefix(folder + "/");
+                existingFileHelper.trackGenerated(id, MODEL);
+                return generatedModels.computeIfAbsent(id, factory);
+            }
+        });
+    }
+
+    private static class MoldLoaderBuilder extends CustomLoaderBuilder<BlockModelBuilder> {
+
+        private final String[] pattern = new String[14];
+        private int row = 0;
+
+        protected MoldLoaderBuilder(BlockModelBuilder parent, ExistingFileHelper existingFileHelper) {
+            super(Helpers.identifier("mold"), parent, existingFileHelper, true);
+        }
+
+        public MoldLoaderBuilder row(String str) {
+            if (str.length() != 14) throw new IllegalArgumentException("Pattern must be 14 wide");
+            pattern[row++] = str;
+            return this;
+        }
+
+        public MoldLoaderBuilder fullRow() {
+            return row("XXXXXXXXXXXXXX");
+        }
+
+        @Override
+        public JsonObject toJson(JsonObject json) {
+            if (row != 14) throw new IllegalArgumentException("Pattern must be 14 high");
+            super.toJson(json);
+            final JsonArray arr = new JsonArray(14);
+            for (String row : pattern) arr.add(row);
+            json.add("pattern", arr);
+            return json;
+        }
     }
 }

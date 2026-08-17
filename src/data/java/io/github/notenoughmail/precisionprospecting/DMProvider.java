@@ -8,6 +8,7 @@ import net.dries007.tfc.common.component.size.ItemSizeDefinition;
 import net.dries007.tfc.common.component.size.ItemSizeManager;
 import net.dries007.tfc.common.component.size.Size;
 import net.dries007.tfc.common.component.size.Weight;
+import net.dries007.tfc.util.data.FluidHeat;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -41,13 +42,13 @@ public class DMProvider implements Provider {
                     for (ProspectorType type : ProspectorType.VALUES) {
                         add(metal.getSerializedName() + "/" + type, new HeatDefinition(
                                 Ingredient.of(PrecProsItems.TOOLS.get(metal).get(type)),
-                                (fluidHeat.specificHeatCapacity()) / FLUID_HEAT_CAPACITY * (type.defMelt / 100F),
+                                heatCapacity(fluidHeat, type),
                                 fluidHeat.meltTemperature() * 0.6F,
                                 fluidHeat.meltTemperature() * 0.8F
                         ));
                         add(metal.getSerializedName() + "/" + type + "_head", new HeatDefinition(
                                 Ingredient.of(PrecProsItems.TOOL_HEADS.get(metal).get(type)),
-                                (fluidHeat.specificHeatCapacity() / FLUID_HEAT_CAPACITY) * (type.defMelt / 100F),
+                                heatCapacity(fluidHeat, type),
                                 fluidHeat.meltTemperature() * 0.6F,
                                 fluidHeat.meltTemperature() * 0.8F
                         ));
@@ -55,5 +56,9 @@ public class DMProvider implements Provider {
                 });
             }
         });
+    }
+
+    private static float heatCapacity(FluidHeat heat, ProspectorType type) {
+        return heat.specificHeatCapacity() / FLUID_HEAT_CAPACITY * (type.defMelt / 100F);
     }
 }

@@ -97,6 +97,12 @@ public class TagProvider implements Provider {
                                 PROS_HAMMER,
                                 PROS_DRILL
                         );
+                tag(TFCTags.Items.USABLE_IN_MOLD_TABLE)
+                        .add(
+                                PrecProsItems.FIRED_MOLDS.values().stream()
+                                        .map(DeferredHolder::getKey)
+                                        .toArray(ResourceKey[]::new)
+                        );
             }
         });
     }

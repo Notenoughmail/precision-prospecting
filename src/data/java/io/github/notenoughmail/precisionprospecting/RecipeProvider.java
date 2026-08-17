@@ -42,7 +42,8 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-import static io.github.notenoughmail.precisionprospecting.PrecProsDataEntry.*;
+import static io.github.notenoughmail.precisionprospecting.PrecProsDataEntry.METAL_HEATS;
+import static io.github.notenoughmail.precisionprospecting.PrecProsDataEntry.commonTag;
 
 public class RecipeProvider implements Provider {
 
