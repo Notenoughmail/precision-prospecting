@@ -1,11 +1,11 @@
 package io.github.notenoughmail.precisionprospecting;
 
+import net.dries007.tfc.util.FluidAlloy;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.config.ModConfig;
 
-import net.dries007.tfc.util.FluidAlloy;
-
-import static net.neoforged.neoforge.common.ModConfigSpec.*;
+import static net.neoforged.neoforge.common.ModConfigSpec.Builder;
+import static net.neoforged.neoforge.common.ModConfigSpec.IntValue;
 
 public class PrecProsConfig {
 

@@ -20,6 +20,12 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    maven {
+        url = "https://maven.blamejared.com/"
+        content {
+            includeGroup "mezz.jei"
+        }
+    }
 }
 
 base {
@@ -71,7 +77,13 @@ neoForge {
 
             sourceSet = sourceSets.data
 
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+            programArguments.addAll(
+                    '--mod', project.mod_id,
+                    '--all',
+                    '--output', file('src/generated/resources/').getAbsolutePath(),
+                    '--existing', file('src/main/resources/').getAbsolutePath(),
+                    '--existing-mod', 'tfc'
+            )
         }
 
         configureEach {
@@ -98,7 +110,7 @@ configurations {
 dependencies {
     implementation "curse.maven:terrafirmacraft-302973:${tfc_file}"
     implementation "curse.maven:patchouli-306770:${patchi_file}"
-    implementation "curse.maven:jei-238222:${jei_file}"
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
@@ -112,7 +124,8 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_license            : mod_license,
             mod_version            : mod_version,
             mod_authors            : mod_authors,
-            mod_description        : mod_description
+            mod_description        : mod_description,
+            tfc_min_version        : tfc_min_version
     ]
     inputs.properties replaceProperties
     expand replaceProperties

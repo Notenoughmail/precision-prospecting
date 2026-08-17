@@ -29,5 +29,6 @@ issueTrackerURL="https://github.com/Notenoughmail/precision-prospecting/issues"
 [[dependencies.${mod_id}]]
     modId="tfc"
     type="required"
+    versionRange="[${tfc_min_version},)"
     ordering="NONE"
     side="BOTH"
